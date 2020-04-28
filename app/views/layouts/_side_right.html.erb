@@ -1,0 +1,43 @@
+<div class="sb-slidebar sb-right sb-style-overlay sb-width-wide">
+	<div class="controls">
+		<a class="sb-close"><i class="icon-cancel"></i></a>
+	</div>
+	<div class="content">
+		<h2 class="center">Vaše objednávka</h2>
+		<%= render partial: "ric_eshop/public_cart/cart_narrow" %>
+		
+		<% if @cart.empty? %>
+			<div class="flash warning alert"><%= t("activerecord.errors.models.ric_eshop/cart.attributes.cart_items.empty") %></div>
+		<% else %>
+			<% if @session && 
+				@session.location && 
+				@session.delivery_map &&
+				@session.delivery_map.restrict_zone && 
+				@session.delivery_map_zone.nil? 
+			%>
+			
+				<div class="flash danger alert"><%= t("activerecord.errors.models.ric_eshop/order.attributes.customer_location.off_zone") %></div>
+
+			<% elsif @session && 
+				@session.location && 
+				@session.delivery_map_zone && 
+				@session.delivery_map_zone.order_below_min_price != true && 
+				@session.min_order_price.to_i > @cart.basic_price.to_i 
+			%>
+				
+				<div class="flash warning alert"><%= t("activerecord.errors.models.ric_eshop/order.attributes.price.min_price_not_met", min_price: @session.min_order_price.to_i) %></div>
+				<div class="center">
+					<div class="default medium btn"><%= link_to "Objednat a doplatit rozdíl (#{(@session.min_order_price.to_i-@cart.basic_price.to_i).to_s} Kč)", ric_eshop_public.new_order_path(override_min_price: 1) %></div>
+				</div>
+
+			<% else %>
+				
+				<div class="center">
+					<div class="primary medium btn"><%= link_to "Objednat", ric_eshop_public.new_order_path %></div>
+				</div>
+
+			<% end %>
+		<% end %>
+		
+	</div>
+</div>

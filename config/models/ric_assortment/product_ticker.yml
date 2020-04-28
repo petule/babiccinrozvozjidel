@@ -1,0 +1,8 @@
+# Available keys
+keys:
+  - homepage
+  - cart_1
+  - cart_2
+
+# Optionaly disable DB function unaccent while search (i.e. PostgreSQL 8.4 does not support this function)
+disable_unaccent: true

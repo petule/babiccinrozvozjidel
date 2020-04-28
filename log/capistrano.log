@@ -1,0 +1,338 @@
+# Logfile created on 2020-04-28 23:49:18 +0200 by logger.rb/56815
+  INFO ---------------------------------------------------------------------------
+  INFO START 2020-04-28 23:49:18 +0200 cap production deploy
+  INFO ---------------------------------------------------------------------------
+  INFO [6491c782] Running /usr/bin/env mkdir -p /tmp as www-data@31.31.78.161
+ DEBUG [6491c782] Command: /usr/bin/env mkdir -p /tmp
+  INFO ---------------------------------------------------------------------------
+  INFO START 2020-04-28 23:51:49 +0200 cap production deploy
+  INFO ---------------------------------------------------------------------------
+  INFO [374a3fb0] Running /usr/bin/env mkdir -p /tmp as www-data@31.31.78.161
+ DEBUG [374a3fb0] Command: /usr/bin/env mkdir -p /tmp
+  INFO ---------------------------------------------------------------------------
+  INFO START 2020-04-29 00:07:39 +0200 cap production deploy
+  INFO ---------------------------------------------------------------------------
+  INFO [8d4c6840] Running /usr/bin/env mkdir -p /tmp as www-data@31.31.78.161
+ DEBUG [8d4c6840] Command: /usr/bin/env mkdir -p /tmp
+  INFO ---------------------------------------------------------------------------
+  INFO START 2020-04-29 00:11:17 +0200 cap production deploy
+  INFO ---------------------------------------------------------------------------
+  INFO [45980263] Running /usr/bin/env mkdir -p /tmp as www-data@31.31.78.161
+ DEBUG [45980263] Command: /usr/bin/env mkdir -p /tmp
+  INFO ---------------------------------------------------------------------------
+  INFO START 2020-04-29 00:12:22 +0200 cap production deploy
+  INFO ---------------------------------------------------------------------------
+  INFO [a78fd63c] Running /usr/bin/env mkdir -p /tmp as www-data@31.31.78.161
+ DEBUG [a78fd63c] Command: /usr/bin/env mkdir -p /tmp
+  INFO [a78fd63c] Finished in 21.589 seconds with exit status 0 (successful).
+ DEBUG Uploading /tmp/git-ssh-babidlo_www-production-petra.sh 0.0%
+  INFO Uploading /tmp/git-ssh-babidlo_www-production-petra.sh 100.0%
+  INFO [90c7125a] Running /usr/bin/env chmod 700 /tmp/git-ssh-babidlo_www-production-petra.sh as www-data@31.31.78.161
+ DEBUG [90c7125a] Command: /usr/bin/env chmod 700 /tmp/git-ssh-babidlo_www-production-petra.sh
+  INFO [90c7125a] Finished in 0.635 seconds with exit status 0 (successful).
+  INFO [99adfaf3] Running /usr/bin/env git ls-remote --heads git@bitbucket.org:babidlo/babidlo.git as www-data@31.31.78.161
+ DEBUG [99adfaf3] Command: ( export GIT_ASKPASS="/bin/echo" GIT_SSH="/tmp/git-ssh-babidlo_www-production-petra.sh" ; /usr/bin/env git ls-remote --heads git@bitbucket.org:babidlo/babidlo.git )
+ DEBUG [99adfaf3] 	Warning: Permanently added the RSA host key for IP address '2406:da00:ff00::34cc:ea4a' to the list of known hosts.
+ DEBUG [99adfaf3] 	key_from_blob: remaining bytes in key blob 36
+ DEBUG [99adfaf3] 	key_to_blob: unsupported key type 6
+ DEBUG [99adfaf3] 	4cc0fb7695e2fd6b97cd014f829e93f0ce5d7104	refs/heads/bonus
+1958d03cb071505f3644cd3dd180c9a45561212b	refs/heads/master
+075fe36aa8cf789eb834383943acb9ad90ef05bc	refs/heads/rails5
+82fa838be6a933482201144ffca06560dd76ce78	refs/heads/stable
+d648fdc5f9c24935f878072c93a54d043c193ebf	refs/heads/user_reg
+08df05de403043431f3d866aa9e5db01456cd453	refs/heads/uvodni_stranka
+1d52b81a8f408c2b6c0edb9115fad1aec1d0298e	refs/heads/workflow
+  INFO [99adfaf3] Finished in 3.027 seconds with exit status 0 (successful).
+  INFO [1344ddef] Running /usr/bin/env mkdir -p /var/data/production/babiccinrozvozjidel.cz.www/shared /var/data/production/babiccinrozvozjidel.cz.www/releases as www-data@31.31.78.161
+ DEBUG [1344ddef] Command: /usr/bin/env mkdir -p /var/data/production/babiccinrozvozjidel.cz.www/shared /var/data/production/babiccinrozvozjidel.cz.www/releases
+  INFO [1344ddef] Finished in 0.441 seconds with exit status 0 (successful).
+  INFO [2d7cbbaf] Running /usr/bin/env mkdir -p /var/data/production/babiccinrozvozjidel.cz.www/shared/log /var/data/production/babiccinrozvozjidel.cz.www/shared/tmp/pids /var/data/production/babiccinrozvozjidel.cz.www/shared/tmp/cache /var/data/production/babiccinrozvozjidel.cz.www/shared/tmp/sockets /var/data/production/babiccinrozvozjidel.cz.www/shared/vendor/bundle /var/data/production/babiccinrozvozjidel.cz.www/shared/public/system /var/data/production/babiccinrozvozjidel.cz.www/shared/public/fonts /var/data/production/babiccinrozvozjidel.cz.www/shared/public/assets as www-data@31.31.78.161
+ DEBUG [2d7cbbaf] Command: /usr/bin/env mkdir -p /var/data/production/babiccinrozvozjidel.cz.www/shared/log /var/data/production/babiccinrozvozjidel.cz.www/shared/tmp/pids /var/data/production/babiccinrozvozjidel.cz.www/shared/tmp/cache /var/data/production/babiccinrozvozjidel.cz.www/shared/tmp/sockets /var/data/production/babiccinrozvozjidel.cz.www/shared/vendor/bundle /var/data/production/babiccinrozvozjidel.cz.www/shared/public/system /var/data/production/babiccinrozvozjidel.cz.www/shared/public/fonts /var/data/production/babiccinrozvozjidel.cz.www/shared/public/assets
+  INFO [2d7cbbaf] Finished in 0.660 seconds with exit status 0 (successful).
+  INFO [9754e372] Running /usr/bin/env mkdir -p /var/data/production/babiccinrozvozjidel.cz.www/shared/config /var/data/production/babiccinrozvozjidel.cz.www/shared as www-data@31.31.78.161
+ DEBUG [9754e372] Command: /usr/bin/env mkdir -p /var/data/production/babiccinrozvozjidel.cz.www/shared/config /var/data/production/babiccinrozvozjidel.cz.www/shared
+  INFO [9754e372] Finished in 0.511 seconds with exit status 0 (successful).
+ DEBUG [cc6b5edd] Running [ -f /var/data/production/babiccinrozvozjidel.cz.www/shared/config/database.yml ] as www-data@31.31.78.161
+ DEBUG [cc6b5edd] Command: [ -f /var/data/production/babiccinrozvozjidel.cz.www/shared/config/database.yml ]
+ DEBUG [cc6b5edd] Finished in 0.355 seconds with exit status 0 (successful).
+ DEBUG [c524ed35] Running [ -f /var/data/production/babiccinrozvozjidel.cz.www/shared/.env.local ] as www-data@31.31.78.161
+ DEBUG [c524ed35] Command: [ -f /var/data/production/babiccinrozvozjidel.cz.www/shared/.env.local ]
+ DEBUG [c524ed35] Finished in 0.393 seconds with exit status 0 (successful).
+ DEBUG [b63ea5e8] Running [ -f /var/data/production/babiccinrozvozjidel.cz.www/current/REVISION ] as www-data@31.31.78.161
+ DEBUG [b63ea5e8] Command: [ -f /var/data/production/babiccinrozvozjidel.cz.www/current/REVISION ]
+ DEBUG [b63ea5e8] Finished in 0.349 seconds with exit status 0 (successful).
+ DEBUG [d0979e35] Running /usr/bin/env cat /var/data/production/babiccinrozvozjidel.cz.www/current/REVISION 2>/dev/null as www-data@31.31.78.161
+ DEBUG [d0979e35] Command: /usr/bin/env cat /var/data/production/babiccinrozvozjidel.cz.www/current/REVISION 2>/dev/null
+ DEBUG [d0979e35] 	82fa838be6a933482201144ffca06560dd76ce78
+ DEBUG [d0979e35] Finished in 0.350 seconds with exit status 0 (successful).
+ DEBUG [88c29012] Running [ -f /var/data/production/babiccinrozvozjidel.cz.www/repo/HEAD ] as www-data@31.31.78.161
+ DEBUG [88c29012] Command: [ -f /var/data/production/babiccinrozvozjidel.cz.www/repo/HEAD ]
+ DEBUG [88c29012] Finished in 0.494 seconds with exit status 0 (successful).
+  INFO The repository mirror is at /var/data/production/babiccinrozvozjidel.cz.www/repo
+ DEBUG [70f63d9d] Running if test ! -d /var/data/production/babiccinrozvozjidel.cz.www/repo; then echo "Directory does not exist '/var/data/production/babiccinrozvozjidel.cz.www/repo'" 1>&2; false; fi as www-data@31.31.78.161
+ DEBUG [70f63d9d] Command: if test ! -d /var/data/production/babiccinrozvozjidel.cz.www/repo; then echo "Directory does not exist '/var/data/production/babiccinrozvozjidel.cz.www/repo'" 1>&2; false; fi
+ DEBUG [70f63d9d] Finished in 0.433 seconds with exit status 0 (successful).
+  INFO [e711e2bc] Running /usr/bin/env git remote update --prune as www-data@31.31.78.161
+ DEBUG [e711e2bc] Command: cd /var/data/production/babiccinrozvozjidel.cz.www/repo && ( export GIT_ASKPASS="/bin/echo" GIT_SSH="/tmp/git-ssh-babidlo_www-production-petra.sh" ; /usr/bin/env git remote update --prune )
+ DEBUG [e711e2bc] 	Fetching origin
+ DEBUG [e711e2bc] 	Warning: Permanently added the RSA host key for IP address '2406:da00:ff00::22c5:2ef4' to the list of known hosts.
+ DEBUG [e711e2bc] 	key_from_blob: remaining bytes in key blob 36
+ DEBUG [e711e2bc] 	key_to_blob: unsupported key type 6
+ DEBUG [e711e2bc] 	From bitbucket.org:babidlo/babidlo
+   82fa838..1958d03  master     -> master
+ * [new branch]      rails5     -> rails5
+  INFO [e711e2bc] Finished in 6.121 seconds with exit status 0 (successful).
+ DEBUG [9401bd96] Running if test ! -d /var/data/production/babiccinrozvozjidel.cz.www/repo; then echo "Directory does not exist '/var/data/production/babiccinrozvozjidel.cz.www/repo'" 1>&2; false; fi as www-data@31.31.78.161
+ DEBUG [9401bd96] Command: if test ! -d /var/data/production/babiccinrozvozjidel.cz.www/repo; then echo "Directory does not exist '/var/data/production/babiccinrozvozjidel.cz.www/repo'" 1>&2; false; fi
+ DEBUG [9401bd96] Finished in 0.612 seconds with exit status 0 (successful).
+  INFO [231c30c9] Running /usr/bin/env mkdir -p /var/data/production/babiccinrozvozjidel.cz.www/releases/20200428221252 as www-data@31.31.78.161
+ DEBUG [231c30c9] Command: cd /var/data/production/babiccinrozvozjidel.cz.www/repo && ( export GIT_ASKPASS="/bin/echo" GIT_SSH="/tmp/git-ssh-babidlo_www-production-petra.sh" ; /usr/bin/env mkdir -p /var/data/production/babiccinrozvozjidel.cz.www/releases/20200428221252 )
+  INFO [231c30c9] Finished in 0.530 seconds with exit status 0 (successful).
+  INFO [51e28fb3] Running /usr/bin/env git archive stable | tar -x -f - -C /var/data/production/babiccinrozvozjidel.cz.www/releases/20200428221252 as www-data@31.31.78.161
+ DEBUG [51e28fb3] Command: cd /var/data/production/babiccinrozvozjidel.cz.www/repo && ( export GIT_ASKPASS="/bin/echo" GIT_SSH="/tmp/git-ssh-babidlo_www-production-petra.sh" ; /usr/bin/env git archive stable | tar -x -f - -C /var/data/production/babiccinrozvozjidel.cz.www/releases/20200428221252 )
+  INFO [51e28fb3] Finished in 0.989 seconds with exit status 0 (successful).
+ DEBUG [64d76648] Running if test ! -d /var/data/production/babiccinrozvozjidel.cz.www/repo; then echo "Directory does not exist '/var/data/production/babiccinrozvozjidel.cz.www/repo'" 1>&2; false; fi as www-data@31.31.78.161
+ DEBUG [64d76648] Command: if test ! -d /var/data/production/babiccinrozvozjidel.cz.www/repo; then echo "Directory does not exist '/var/data/production/babiccinrozvozjidel.cz.www/repo'" 1>&2; false; fi
+ DEBUG [64d76648] Finished in 0.526 seconds with exit status 0 (successful).
+ DEBUG [bd6e19b7] Running /usr/bin/env git rev-list --max-count=1 stable as www-data@31.31.78.161
+ DEBUG [bd6e19b7] Command: cd /var/data/production/babiccinrozvozjidel.cz.www/repo && ( export GIT_ASKPASS="/bin/echo" GIT_SSH="/tmp/git-ssh-babidlo_www-production-petra.sh" ; /usr/bin/env git rev-list --max-count=1 stable )
+ DEBUG [bd6e19b7] 	82fa838be6a933482201144ffca06560dd76ce78
+ DEBUG [bd6e19b7] Finished in 0.461 seconds with exit status 0 (successful).
+ DEBUG [a28f1d9f] Running if test ! -d /var/data/production/babiccinrozvozjidel.cz.www/releases/20200428221252; then echo "Directory does not exist '/var/data/production/babiccinrozvozjidel.cz.www/releases/20200428221252'" 1>&2; false; fi as www-data@31.31.78.161
+ DEBUG [a28f1d9f] Command: if test ! -d /var/data/production/babiccinrozvozjidel.cz.www/releases/20200428221252; then echo "Directory does not exist '/var/data/production/babiccinrozvozjidel.cz.www/releases/20200428221252'" 1>&2; false; fi
+ DEBUG [a28f1d9f] Finished in 0.460 seconds with exit status 0 (successful).
+  INFO [46d3e04c] Running /usr/bin/env echo "82fa838be6a933482201144ffca06560dd76ce78" >> REVISION as www-data@31.31.78.161
+ DEBUG [46d3e04c] Command: cd /var/data/production/babiccinrozvozjidel.cz.www/releases/20200428221252 && /usr/bin/env echo "82fa838be6a933482201144ffca06560dd76ce78" >> REVISION
+  INFO [46d3e04c] Finished in 0.613 seconds with exit status 0 (successful).
+  INFO [c04b680c] Running /usr/bin/env mkdir -p /var/data/production/babiccinrozvozjidel.cz.www/releases/20200428221252/config /var/data/production/babiccinrozvozjidel.cz.www/releases/20200428221252 as www-data@31.31.78.161
+ DEBUG [c04b680c] Command: /usr/bin/env mkdir -p /var/data/production/babiccinrozvozjidel.cz.www/releases/20200428221252/config /var/data/production/babiccinrozvozjidel.cz.www/releases/20200428221252
+  INFO [c04b680c] Finished in 0.513 seconds with exit status 0 (successful).
+ DEBUG [e1e7d4e1] Running [ -L /var/data/production/babiccinrozvozjidel.cz.www/releases/20200428221252/config/database.yml ] as www-data@31.31.78.161
+ DEBUG [e1e7d4e1] Command: [ -L /var/data/production/babiccinrozvozjidel.cz.www/releases/20200428221252/config/database.yml ]
+ DEBUG [e1e7d4e1] Finished in 0.399 seconds with exit status 1 (failed).
+ DEBUG [780ccaa7] Running [ -f /var/data/production/babiccinrozvozjidel.cz.www/releases/20200428221252/config/database.yml ] as www-data@31.31.78.161
+ DEBUG [780ccaa7] Command: [ -f /var/data/production/babiccinrozvozjidel.cz.www/releases/20200428221252/config/database.yml ]
+ DEBUG [780ccaa7] Finished in 0.568 seconds with exit status 1 (failed).
+  INFO [cd2cca85] Running /usr/bin/env ln -s /var/data/production/babiccinrozvozjidel.cz.www/shared/config/database.yml /var/data/production/babiccinrozvozjidel.cz.www/releases/20200428221252/config/database.yml as www-data@31.31.78.161
+ DEBUG [cd2cca85] Command: /usr/bin/env ln -s /var/data/production/babiccinrozvozjidel.cz.www/shared/config/database.yml /var/data/production/babiccinrozvozjidel.cz.www/releases/20200428221252/config/database.yml
+  INFO [cd2cca85] Finished in 0.931 seconds with exit status 0 (successful).
+ DEBUG [e0476c2e] Running [ -L /var/data/production/babiccinrozvozjidel.cz.www/releases/20200428221252/.env.local ] as www-data@31.31.78.161
+ DEBUG [e0476c2e] Command: [ -L /var/data/production/babiccinrozvozjidel.cz.www/releases/20200428221252/.env.local ]
+ DEBUG [e0476c2e] Finished in 0.862 seconds with exit status 1 (failed).
+ DEBUG [25343753] Running [ -f /var/data/production/babiccinrozvozjidel.cz.www/releases/20200428221252/.env.local ] as www-data@31.31.78.161
+ DEBUG [25343753] Command: [ -f /var/data/production/babiccinrozvozjidel.cz.www/releases/20200428221252/.env.local ]
+ DEBUG [25343753] Finished in 0.396 seconds with exit status 1 (failed).
+  INFO [96bb30c0] Running /usr/bin/env ln -s /var/data/production/babiccinrozvozjidel.cz.www/shared/.env.local /var/data/production/babiccinrozvozjidel.cz.www/releases/20200428221252/.env.local as www-data@31.31.78.161
+ DEBUG [96bb30c0] Command: /usr/bin/env ln -s /var/data/production/babiccinrozvozjidel.cz.www/shared/.env.local /var/data/production/babiccinrozvozjidel.cz.www/releases/20200428221252/.env.local
+  INFO [96bb30c0] Finished in 0.420 seconds with exit status 0 (successful).
+  INFO [314519d1] Running /usr/bin/env mkdir -p /var/data/production/babiccinrozvozjidel.cz.www/releases/20200428221252 /var/data/production/babiccinrozvozjidel.cz.www/releases/20200428221252/tmp /var/data/production/babiccinrozvozjidel.cz.www/releases/20200428221252/vendor /var/data/production/babiccinrozvozjidel.cz.www/releases/20200428221252/public as www-data@31.31.78.161
+ DEBUG [314519d1] Command: /usr/bin/env mkdir -p /var/data/production/babiccinrozvozjidel.cz.www/releases/20200428221252 /var/data/production/babiccinrozvozjidel.cz.www/releases/20200428221252/tmp /var/data/production/babiccinrozvozjidel.cz.www/releases/20200428221252/vendor /var/data/production/babiccinrozvozjidel.cz.www/releases/20200428221252/public
+  INFO [314519d1] Finished in 0.508 seconds with exit status 0 (successful).
+ DEBUG [07195624] Running [ -L /var/data/production/babiccinrozvozjidel.cz.www/releases/20200428221252/log ] as www-data@31.31.78.161
+ DEBUG [07195624] Command: [ -L /var/data/production/babiccinrozvozjidel.cz.www/releases/20200428221252/log ]
+ DEBUG [07195624] Finished in 0.512 seconds with exit status 1 (failed).
+ DEBUG [c85683ff] Running [ -d /var/data/production/babiccinrozvozjidel.cz.www/releases/20200428221252/log ] as www-data@31.31.78.161
+ DEBUG [c85683ff] Command: [ -d /var/data/production/babiccinrozvozjidel.cz.www/releases/20200428221252/log ]
+ DEBUG [c85683ff] Finished in 0.513 seconds with exit status 0 (successful).
+  INFO [7ed34569] Running /usr/bin/env rm -rf /var/data/production/babiccinrozvozjidel.cz.www/releases/20200428221252/log as www-data@31.31.78.161
+ DEBUG [7ed34569] Command: /usr/bin/env rm -rf /var/data/production/babiccinrozvozjidel.cz.www/releases/20200428221252/log
+  INFO [7ed34569] Finished in 0.409 seconds with exit status 0 (successful).
+  INFO [22117ada] Running /usr/bin/env ln -s /var/data/production/babiccinrozvozjidel.cz.www/shared/log /var/data/production/babiccinrozvozjidel.cz.www/releases/20200428221252/log as www-data@31.31.78.161
+ DEBUG [22117ada] Command: /usr/bin/env ln -s /var/data/production/babiccinrozvozjidel.cz.www/shared/log /var/data/production/babiccinrozvozjidel.cz.www/releases/20200428221252/log
+  INFO [22117ada] Finished in 0.409 seconds with exit status 0 (successful).
+ DEBUG [df8fe7ed] Running [ -L /var/data/production/babiccinrozvozjidel.cz.www/releases/20200428221252/tmp/pids ] as www-data@31.31.78.161
+ DEBUG [df8fe7ed] Command: [ -L /var/data/production/babiccinrozvozjidel.cz.www/releases/20200428221252/tmp/pids ]
+ DEBUG [df8fe7ed] Finished in 0.409 seconds with exit status 1 (failed).
+ DEBUG [cc6e47c1] Running [ -d /var/data/production/babiccinrozvozjidel.cz.www/releases/20200428221252/tmp/pids ] as www-data@31.31.78.161
+ DEBUG [cc6e47c1] Command: [ -d /var/data/production/babiccinrozvozjidel.cz.www/releases/20200428221252/tmp/pids ]
+ DEBUG [cc6e47c1] Finished in 0.379 seconds with exit status 1 (failed).
+  INFO [ee864e4e] Running /usr/bin/env ln -s /var/data/production/babiccinrozvozjidel.cz.www/shared/tmp/pids /var/data/production/babiccinrozvozjidel.cz.www/releases/20200428221252/tmp/pids as www-data@31.31.78.161
+ DEBUG [ee864e4e] Command: /usr/bin/env ln -s /var/data/production/babiccinrozvozjidel.cz.www/shared/tmp/pids /var/data/production/babiccinrozvozjidel.cz.www/releases/20200428221252/tmp/pids
+  INFO [ee864e4e] Finished in 0.415 seconds with exit status 0 (successful).
+ DEBUG [7a16cfda] Running [ -L /var/data/production/babiccinrozvozjidel.cz.www/releases/20200428221252/tmp/cache ] as www-data@31.31.78.161
+ DEBUG [7a16cfda] Command: [ -L /var/data/production/babiccinrozvozjidel.cz.www/releases/20200428221252/tmp/cache ]
+ DEBUG [7a16cfda] Finished in 0.432 seconds with exit status 1 (failed).
+ DEBUG [1d7a7ad1] Running [ -d /var/data/production/babiccinrozvozjidel.cz.www/releases/20200428221252/tmp/cache ] as www-data@31.31.78.161
+ DEBUG [1d7a7ad1] Command: [ -d /var/data/production/babiccinrozvozjidel.cz.www/releases/20200428221252/tmp/cache ]
+ DEBUG [1d7a7ad1] Finished in 0.408 seconds with exit status 1 (failed).
+  INFO [4db3fe13] Running /usr/bin/env ln -s /var/data/production/babiccinrozvozjidel.cz.www/shared/tmp/cache /var/data/production/babiccinrozvozjidel.cz.www/releases/20200428221252/tmp/cache as www-data@31.31.78.161
+ DEBUG [4db3fe13] Command: /usr/bin/env ln -s /var/data/production/babiccinrozvozjidel.cz.www/shared/tmp/cache /var/data/production/babiccinrozvozjidel.cz.www/releases/20200428221252/tmp/cache
+  INFO [4db3fe13] Finished in 0.615 seconds with exit status 0 (successful).
+ DEBUG [0f3a7487] Running [ -L /var/data/production/babiccinrozvozjidel.cz.www/releases/20200428221252/tmp/sockets ] as www-data@31.31.78.161
+ DEBUG [0f3a7487] Command: [ -L /var/data/production/babiccinrozvozjidel.cz.www/releases/20200428221252/tmp/sockets ]
+ DEBUG [0f3a7487] Finished in 0.409 seconds with exit status 1 (failed).
+ DEBUG [41a70498] Running [ -d /var/data/production/babiccinrozvozjidel.cz.www/releases/20200428221252/tmp/sockets ] as www-data@31.31.78.161
+ DEBUG [41a70498] Command: [ -d /var/data/production/babiccinrozvozjidel.cz.www/releases/20200428221252/tmp/sockets ]
+ DEBUG [41a70498] Finished in 0.513 seconds with exit status 1 (failed).
+  INFO [82bbd6a9] Running /usr/bin/env ln -s /var/data/production/babiccinrozvozjidel.cz.www/shared/tmp/sockets /var/data/production/babiccinrozvozjidel.cz.www/releases/20200428221252/tmp/sockets as www-data@31.31.78.161
+ DEBUG [82bbd6a9] Command: /usr/bin/env ln -s /var/data/production/babiccinrozvozjidel.cz.www/shared/tmp/sockets /var/data/production/babiccinrozvozjidel.cz.www/releases/20200428221252/tmp/sockets
+  INFO [82bbd6a9] Finished in 0.408 seconds with exit status 0 (successful).
+ DEBUG [c91ea3c3] Running [ -L /var/data/production/babiccinrozvozjidel.cz.www/releases/20200428221252/vendor/bundle ] as www-data@31.31.78.161
+ DEBUG [c91ea3c3] Command: [ -L /var/data/production/babiccinrozvozjidel.cz.www/releases/20200428221252/vendor/bundle ]
+ DEBUG [c91ea3c3] Finished in 0.512 seconds with exit status 1 (failed).
+ DEBUG [4f773c36] Running [ -d /var/data/production/babiccinrozvozjidel.cz.www/releases/20200428221252/vendor/bundle ] as www-data@31.31.78.161
+ DEBUG [4f773c36] Command: [ -d /var/data/production/babiccinrozvozjidel.cz.www/releases/20200428221252/vendor/bundle ]
+ DEBUG [4f773c36] Finished in 0.410 seconds with exit status 1 (failed).
+  INFO [f76abb59] Running /usr/bin/env ln -s /var/data/production/babiccinrozvozjidel.cz.www/shared/vendor/bundle /var/data/production/babiccinrozvozjidel.cz.www/releases/20200428221252/vendor/bundle as www-data@31.31.78.161
+ DEBUG [f76abb59] Command: /usr/bin/env ln -s /var/data/production/babiccinrozvozjidel.cz.www/shared/vendor/bundle /var/data/production/babiccinrozvozjidel.cz.www/releases/20200428221252/vendor/bundle
+  INFO [f76abb59] Finished in 0.409 seconds with exit status 0 (successful).
+ DEBUG [7690c604] Running [ -L /var/data/production/babiccinrozvozjidel.cz.www/releases/20200428221252/public/system ] as www-data@31.31.78.161
+ DEBUG [7690c604] Command: [ -L /var/data/production/babiccinrozvozjidel.cz.www/releases/20200428221252/public/system ]
+ DEBUG [7690c604] Finished in 0.511 seconds with exit status 1 (failed).
+ DEBUG [457ac5ad] Running [ -d /var/data/production/babiccinrozvozjidel.cz.www/releases/20200428221252/public/system ] as www-data@31.31.78.161
+ DEBUG [457ac5ad] Command: [ -d /var/data/production/babiccinrozvozjidel.cz.www/releases/20200428221252/public/system ]
+ DEBUG [457ac5ad] Finished in 0.410 seconds with exit status 1 (failed).
+  INFO [6715ee49] Running /usr/bin/env ln -s /var/data/production/babiccinrozvozjidel.cz.www/shared/public/system /var/data/production/babiccinrozvozjidel.cz.www/releases/20200428221252/public/system as www-data@31.31.78.161
+ DEBUG [6715ee49] Command: /usr/bin/env ln -s /var/data/production/babiccinrozvozjidel.cz.www/shared/public/system /var/data/production/babiccinrozvozjidel.cz.www/releases/20200428221252/public/system
+  INFO [6715ee49] Finished in 0.511 seconds with exit status 0 (successful).
+ DEBUG [f50e13ae] Running [ -L /var/data/production/babiccinrozvozjidel.cz.www/releases/20200428221252/public/fonts ] as www-data@31.31.78.161
+ DEBUG [f50e13ae] Command: [ -L /var/data/production/babiccinrozvozjidel.cz.www/releases/20200428221252/public/fonts ]
+ DEBUG [f50e13ae] Finished in 0.515 seconds with exit status 1 (failed).
+ DEBUG [2154b2a7] Running [ -d /var/data/production/babiccinrozvozjidel.cz.www/releases/20200428221252/public/fonts ] as www-data@31.31.78.161
+ DEBUG [2154b2a7] Command: [ -d /var/data/production/babiccinrozvozjidel.cz.www/releases/20200428221252/public/fonts ]
+ DEBUG [2154b2a7] Finished in 0.405 seconds with exit status 1 (failed).
+  INFO [4e2e7889] Running /usr/bin/env ln -s /var/data/production/babiccinrozvozjidel.cz.www/shared/public/fonts /var/data/production/babiccinrozvozjidel.cz.www/releases/20200428221252/public/fonts as www-data@31.31.78.161
+ DEBUG [4e2e7889] Command: /usr/bin/env ln -s /var/data/production/babiccinrozvozjidel.cz.www/shared/public/fonts /var/data/production/babiccinrozvozjidel.cz.www/releases/20200428221252/public/fonts
+  INFO [4e2e7889] Finished in 0.408 seconds with exit status 0 (successful).
+ DEBUG [723c203c] Running [ -L /var/data/production/babiccinrozvozjidel.cz.www/releases/20200428221252/public/assets ] as www-data@31.31.78.161
+ DEBUG [723c203c] Command: [ -L /var/data/production/babiccinrozvozjidel.cz.www/releases/20200428221252/public/assets ]
+ DEBUG [723c203c] Finished in 0.409 seconds with exit status 1 (failed).
+ DEBUG [5579538a] Running [ -d /var/data/production/babiccinrozvozjidel.cz.www/releases/20200428221252/public/assets ] as www-data@31.31.78.161
+ DEBUG [5579538a] Command: [ -d /var/data/production/babiccinrozvozjidel.cz.www/releases/20200428221252/public/assets ]
+ DEBUG [5579538a] Finished in 0.512 seconds with exit status 1 (failed).
+  INFO [2736bfc0] Running /usr/bin/env ln -s /var/data/production/babiccinrozvozjidel.cz.www/shared/public/assets /var/data/production/babiccinrozvozjidel.cz.www/releases/20200428221252/public/assets as www-data@31.31.78.161
+ DEBUG [2736bfc0] Command: /usr/bin/env ln -s /var/data/production/babiccinrozvozjidel.cz.www/shared/public/assets /var/data/production/babiccinrozvozjidel.cz.www/releases/20200428221252/public/assets
+  INFO [2736bfc0] Finished in 0.449 seconds with exit status 0 (successful).
+ DEBUG [32eb3d80] Running if test ! -d /var/data/production/babiccinrozvozjidel.cz.www/releases/20200428221252; then echo "Directory does not exist '/var/data/production/babiccinrozvozjidel.cz.www/releases/20200428221252'" 1>&2; false; fi as www-data@31.31.78.161
+ DEBUG [32eb3d80] Command: if test ! -d /var/data/production/babiccinrozvozjidel.cz.www/releases/20200428221252; then echo "Directory does not exist '/var/data/production/babiccinrozvozjidel.cz.www/releases/20200428221252'" 1>&2; false; fi
+ DEBUG [32eb3d80] Finished in 0.471 seconds with exit status 0 (successful).
+ DEBUG [59799d8a] Running /usr/bin/env bundle check --path /var/data/production/babiccinrozvozjidel.cz.www/shared/bundle as www-data@31.31.78.161
+ DEBUG [59799d8a] Command: cd /var/data/production/babiccinrozvozjidel.cz.www/releases/20200428221252 && /usr/bin/env bundle check --path /var/data/production/babiccinrozvozjidel.cz.www/shared/bundle
+ DEBUG [59799d8a] 	Warning: this Gemfile contains multiple primary sources. Using `source` more than once without a block is a security risk, and may result in installing unexpected gems. To resolve this warning, use a block to indicate which gems should come from the secondary source. To upgrade this warning to an error, run `bundle config disable_multisource true`.
+ DEBUG [59799d8a] 	Warning: the running version of Bundler is older than the version that created the lockfile. We suggest you upgrade to the latest version of Bundler by running `gem install bundler`.
+ DEBUG [59799d8a] 	Resolving dependencies...
+ DEBUG [59799d8a] 	.
+ DEBUG [59799d8a] 	.
+ DEBUG [59799d8a] 	.
+ DEBUG [59799d8a] 	.
+ DEBUG [59799d8a] 	.
+ DEBUG [59799d8a] 	
+ DEBUG [59799d8a] 	The following gems are missing
+ DEBUG [59799d8a] 	 * public_suffix (2.0.5)
+ DEBUG [59799d8a] 	 * addressable (2.5.0)
+ DEBUG [59799d8a] 	 * net-ssh (4.0.1)
+ DEBUG [59799d8a] 	 * net-scp (1.2.1)
+ DEBUG [59799d8a] 	 * sshkit (1.12.0)
+ DEBUG [59799d8a] 	 * airbrussh (1.1.2)
+ DEBUG [59799d8a] 	 * byebug (9.0.5)
+ DEBUG [59799d8a] 	 * capistrano-harrow (0.5.3)
+ DEBUG [59799d8a] 	 * capistrano (3.6.1)
+ DEBUG [59799d8a] 	 * capistrano-bundler (1.1.4)
+ DEBUG [59799d8a] 	 * capistrano-passenger (0.2.0)
+ DEBUG [59799d8a] 	 * capistrano-rails (1.1.7)
+ DEBUG [59799d8a] 	 * xpath (2.0.0)
+ DEBUG [59799d8a] 	 * capybara (2.12.1)
+ DEBUG [59799d8a] 	 * chunky_png (1.3.6)
+ DEBUG [59799d8a] 	 * cliver (0.3.2)
+ DEBUG [59799d8a] 	 * compass-core (1.0.3)
+ DEBUG [59799d8a] 	 * compass-import-once (1.0.5)
+ DEBUG [59799d8a] 	 * rb-fsevent (0.9.7)
+ DEBUG [59799d8a] 	 * ffi (1.9.10)
+ DEBUG [59799d8a] 	 * rb-inotify (0.9.7)
+ DEBUG [59799d8a] 	 * compass (1.0.3)
+ DEBUG [59799d8a] 	 * daemons (1.2.3)
+ DEBUG [59799d8a] 	 * diff-lcs (1.3)
+ DEBUG [59799d8a] 	 * eventmachine (1.2.0.1)
+ DEBUG [59799d8a] 	 * modular-scale (2.1.1)
+ DEBUG [59799d8a] 	 * websocket-extensions (0.1.2)
+ DEBUG [59799d8a] 	 * websocket-driver (0.6.5)
+ DEBUG [59799d8a] 	 * poltergeist (1.13.0)
+ DEBUG [59799d8a] 	 * quiet_assets (1.1.0)
+ DEBUG [59799d8a] 	 * rspec-support (3.5.0)
+ DEBUG [59799d8a] 	 * rspec-core (3.5.4)
+ DEBUG [59799d8a] 	 * rspec-expectations (3.5.0)
+ DEBUG [59799d8a] 	 * rspec-mocks (3.5.0)
+ DEBUG [59799d8a] 	 * rspec-rails (3.5.2)
+ DEBUG [59799d8a] 	 * spring (1.7.1)
+ DEBUG [59799d8a] 	 * thin (1.7.0)
+ DEBUG [59799d8a] 	Install missing gems with `bundle install`
+ DEBUG [59799d8a] Finished in 2.976 seconds with exit status 1 (failed).
+  INFO [94c05d91] Running /usr/bin/env bundle install --path /var/data/production/babiccinrozvozjidel.cz.www/shared/bundle --jobs 4 --without development test --deployment --quiet as www-data@31.31.78.161
+ DEBUG [94c05d91] Command: cd /var/data/production/babiccinrozvozjidel.cz.www/releases/20200428221252 && /usr/bin/env bundle install --path /var/data/production/babiccinrozvozjidel.cz.www/shared/bundle --jobs 4 --without development test --deployment --quiet
+  INFO [94c05d91] Finished in 2.540 seconds with exit status 0 (successful).
+ DEBUG [9ed2c434] Running if test ! -d /var/data/production/babiccinrozvozjidel.cz.www/releases/20200428221252; then echo "Directory does not exist '/var/data/production/babiccinrozvozjidel.cz.www/releases/20200428221252'" 1>&2; false; fi as www-data@31.31.78.161
+ DEBUG [9ed2c434] Command: if test ! -d /var/data/production/babiccinrozvozjidel.cz.www/releases/20200428221252; then echo "Directory does not exist '/var/data/production/babiccinrozvozjidel.cz.www/releases/20200428221252'" 1>&2; false; fi
+ DEBUG [9ed2c434] Finished in 0.875 seconds with exit status 0 (successful).
+  INFO [15eaedef] Running bundle exec rake assets:precompile as www-data@31.31.78.161
+ DEBUG [15eaedef] Command: cd /var/data/production/babiccinrozvozjidel.cz.www/releases/20200428221252 && ( export RAILS_ENV="production" RAILS_GROUPS="" ; bundle exec rake assets:precompile )
+  INFO [15eaedef] Finished in 159.699 seconds with exit status 0 (successful).
+ DEBUG [6ce60896] Running if test ! -d /var/data/production/babiccinrozvozjidel.cz.www/releases/20200428221252; then echo "Directory does not exist '/var/data/production/babiccinrozvozjidel.cz.www/releases/20200428221252'" 1>&2; false; fi as www-data@31.31.78.161
+ DEBUG [6ce60896] Command: if test ! -d /var/data/production/babiccinrozvozjidel.cz.www/releases/20200428221252; then echo "Directory does not exist '/var/data/production/babiccinrozvozjidel.cz.www/releases/20200428221252'" 1>&2; false; fi
+ DEBUG [6ce60896] Finished in 0.409 seconds with exit status 0 (successful).
+  INFO [fdf4ada0] Running /usr/bin/env mkdir -p /var/data/production/babiccinrozvozjidel.cz.www/releases/20200428221252/assets_manifest_backup as www-data@31.31.78.161
+ DEBUG [fdf4ada0] Command: cd /var/data/production/babiccinrozvozjidel.cz.www/releases/20200428221252 && /usr/bin/env mkdir -p /var/data/production/babiccinrozvozjidel.cz.www/releases/20200428221252/assets_manifest_backup
+  INFO [fdf4ada0] Finished in 0.614 seconds with exit status 0 (successful).
+ DEBUG [7aadffc1] Running /usr/bin/env ls /var/data/production/babiccinrozvozjidel.cz.www/releases/20200428221252/public/assets/.sprockets-manifest* as www-data@31.31.78.161
+ DEBUG [7aadffc1] Command: cd /var/data/production/babiccinrozvozjidel.cz.www/releases/20200428221252 && /usr/bin/env ls /var/data/production/babiccinrozvozjidel.cz.www/releases/20200428221252/public/assets/.sprockets-manifest*
+ DEBUG [7aadffc1] 	/var/data/production/babiccinrozvozjidel.cz.www/releases/20200428221252/public/assets/.sprockets-manifest-654eeda15181b7f1022a785b6eef9653.json
+ DEBUG [7aadffc1] Finished in 0.511 seconds with exit status 0 (successful).
+ DEBUG [46cc3390] Running /usr/bin/env ls /var/data/production/babiccinrozvozjidel.cz.www/releases/20200428221252/public/assets/.sprockets-manifest* as www-data@31.31.78.161
+ DEBUG [46cc3390] Command: cd /var/data/production/babiccinrozvozjidel.cz.www/releases/20200428221252 && /usr/bin/env ls /var/data/production/babiccinrozvozjidel.cz.www/releases/20200428221252/public/assets/.sprockets-manifest*
+ DEBUG [46cc3390] 	/var/data/production/babiccinrozvozjidel.cz.www/releases/20200428221252/public/assets/.sprockets-manifest-654eeda15181b7f1022a785b6eef9653.json
+ DEBUG [46cc3390] Finished in 0.614 seconds with exit status 0 (successful).
+  INFO [ad147da2] Running /usr/bin/env cp /var/data/production/babiccinrozvozjidel.cz.www/releases/20200428221252/public/assets/.sprockets-manifest-654eeda15181b7f1022a785b6eef9653.json /var/data/production/babiccinrozvozjidel.cz.www/releases/20200428221252/assets_manifest_backup as www-data@31.31.78.161
+ DEBUG [ad147da2] Command: cd /var/data/production/babiccinrozvozjidel.cz.www/releases/20200428221252 && /usr/bin/env cp /var/data/production/babiccinrozvozjidel.cz.www/releases/20200428221252/public/assets/.sprockets-manifest-654eeda15181b7f1022a785b6eef9653.json /var/data/production/babiccinrozvozjidel.cz.www/releases/20200428221252/assets_manifest_backup
+  INFO [ad147da2] Finished in 0.511 seconds with exit status 0 (successful).
+  INFO [deploy:migrate] Run `rake db:migrate`
+ DEBUG [1a40b89c] Running if test ! -d /var/data/production/babiccinrozvozjidel.cz.www/releases/20200428221252; then echo "Directory does not exist '/var/data/production/babiccinrozvozjidel.cz.www/releases/20200428221252'" 1>&2; false; fi as www-data@31.31.78.161
+ DEBUG [1a40b89c] Command: if test ! -d /var/data/production/babiccinrozvozjidel.cz.www/releases/20200428221252; then echo "Directory does not exist '/var/data/production/babiccinrozvozjidel.cz.www/releases/20200428221252'" 1>&2; false; fi
+ DEBUG [1a40b89c] Finished in 0.409 seconds with exit status 0 (successful).
+  INFO [f4b9e356] Running bundle exec rake db:migrate as www-data@31.31.78.161
+ DEBUG [f4b9e356] Command: cd /var/data/production/babiccinrozvozjidel.cz.www/releases/20200428221252 && ( export RAILS_ENV="production" ; bundle exec rake db:migrate )
+  INFO [f4b9e356] Finished in 9.103 seconds with exit status 0 (successful).
+ DEBUG [6aaca549] Running if test ! -d /var/data/production/babiccinrozvozjidel.cz.www/releases/20200428221252; then echo "Directory does not exist '/var/data/production/babiccinrozvozjidel.cz.www/releases/20200428221252'" 1>&2; false; fi as www-data@31.31.78.161
+ DEBUG [6aaca549] Command: if test ! -d /var/data/production/babiccinrozvozjidel.cz.www/releases/20200428221252; then echo "Directory does not exist '/var/data/production/babiccinrozvozjidel.cz.www/releases/20200428221252'" 1>&2; false; fi
+ DEBUG [6aaca549] Finished in 0.418 seconds with exit status 0 (successful).
+  INFO [727ee86e] Running /usr/bin/env bundle exec whenever --update-crontab babidlo_www_production --set environment=production --roles=app,db,web  as www-data@31.31.78.161
+ DEBUG [727ee86e] Command: cd /var/data/production/babiccinrozvozjidel.cz.www/releases/20200428221252 && ( export RAILS_ENV="production" ; /usr/bin/env bundle exec whenever --update-crontab babidlo_www_production --set environment=production --roles=app,db,web  )
+ DEBUG [727ee86e] 	[write] crontab file updated
+  INFO [727ee86e] Finished in 2.150 seconds with exit status 0 (successful).
+  INFO [458d13f6] Running /usr/bin/env ln -s /var/data/production/babiccinrozvozjidel.cz.www/releases/20200428221252 /var/data/production/babiccinrozvozjidel.cz.www/releases/current as www-data@31.31.78.161
+ DEBUG [458d13f6] Command: /usr/bin/env ln -s /var/data/production/babiccinrozvozjidel.cz.www/releases/20200428221252 /var/data/production/babiccinrozvozjidel.cz.www/releases/current
+  INFO [458d13f6] Finished in 0.409 seconds with exit status 0 (successful).
+  INFO [dcd140eb] Running /usr/bin/env mv /var/data/production/babiccinrozvozjidel.cz.www/releases/current /var/data/production/babiccinrozvozjidel.cz.www as www-data@31.31.78.161
+ DEBUG [dcd140eb] Command: /usr/bin/env mv /var/data/production/babiccinrozvozjidel.cz.www/releases/current /var/data/production/babiccinrozvozjidel.cz.www
+  INFO [dcd140eb] Finished in 0.408 seconds with exit status 0 (successful).
+ DEBUG [c29efa0c] Running if test ! -d /var/data/production/babiccinrozvozjidel.cz.www/releases/20200428221252; then echo "Directory does not exist '/var/data/production/babiccinrozvozjidel.cz.www/releases/20200428221252'" 1>&2; false; fi as www-data@31.31.78.161
+ DEBUG [c29efa0c] Command: if test ! -d /var/data/production/babiccinrozvozjidel.cz.www/releases/20200428221252; then echo "Directory does not exist '/var/data/production/babiccinrozvozjidel.cz.www/releases/20200428221252'" 1>&2; false; fi
+ DEBUG [c29efa0c] Finished in 0.409 seconds with exit status 0 (successful).
+ DEBUG [f2f520ba] Running /usr/bin/env passenger -v as www-data@31.31.78.161
+ DEBUG [f2f520ba] Command: cd /var/data/production/babiccinrozvozjidel.cz.www/releases/20200428221252 && /usr/bin/env passenger -v
+ DEBUG [f2f520ba] 	Phusion Passenger version 5.0.21
+ DEBUG [f2f520ba] 	
+ DEBUG [f2f520ba] 	
+ DEBUG [f2f520ba] 	"Passenger", "Phusion Passenger" and "Union Station" are registered trademarks of Phusion Holding B.V.
+ DEBUG [f2f520ba] 	
+ DEBUG [f2f520ba] Finished in 0.643 seconds with exit status 0 (successful).
+  INFO [cd93aeeb] Running /usr/bin/env sudo /usr/bin/env passenger-config restart-app /var/data/production/babiccinrozvozjidel.cz.www --ignore-app-not-running as www-data@31.31.78.161
+ DEBUG [cd93aeeb] Command: cd /var/data/production/babiccinrozvozjidel.cz.www/releases/20200428221252 && /usr/bin/env sudo /usr/bin/env passenger-config restart-app /var/data/production/babiccinrozvozjidel.cz.www --ignore-app-not-running
+ DEBUG [cd93aeeb] 	Restarting /var/data/production/babiccinrozvozjidel.cz.www/current
+  INFO [cd93aeeb] Finished in 0.991 seconds with exit status 0 (successful).
+  INFO [b61aef3e] Running chmod 777 /var/data/production/babiccinrozvozjidel.cz.www/current/bin/* as www-data@31.31.78.161
+ DEBUG [b61aef3e] Command: chmod 777 /var/data/production/babiccinrozvozjidel.cz.www/current/bin/*
+  INFO [b61aef3e] Finished in 0.512 seconds with exit status 0 (successful).
+ DEBUG [6619be72] Running /usr/bin/env ls -xtr /var/data/production/babiccinrozvozjidel.cz.www/releases as www-data@31.31.78.161
+ DEBUG [6619be72] Command: /usr/bin/env ls -xtr /var/data/production/babiccinrozvozjidel.cz.www/releases
+ DEBUG [6619be72] 	20170815133623	20170816054927	20170816162412	20170821050133	20170823052645
+20200428221252
+ DEBUG [6619be72] Finished in 0.513 seconds with exit status 0 (successful).
+  INFO Keeping 5 of 6 deployed releases on 31.31.78.161
+  INFO [9ab755fe] Running /usr/bin/env rm -rf /var/data/production/babiccinrozvozjidel.cz.www/releases/20170815133623 as www-data@31.31.78.161
+ DEBUG [9ab755fe] Command: /usr/bin/env rm -rf /var/data/production/babiccinrozvozjidel.cz.www/releases/20170815133623
+  INFO [9ab755fe] Finished in 0.614 seconds with exit status 0 (successful).
+ DEBUG [9dcfd565] Running if test ! -d /var/data/production/babiccinrozvozjidel.cz.www/releases; then echo "Directory does not exist '/var/data/production/babiccinrozvozjidel.cz.www/releases'" 1>&2; false; fi as www-data@31.31.78.161
+ DEBUG [9dcfd565] Command: if test ! -d /var/data/production/babiccinrozvozjidel.cz.www/releases; then echo "Directory does not exist '/var/data/production/babiccinrozvozjidel.cz.www/releases'" 1>&2; false; fi
+ DEBUG [9dcfd565] Finished in 0.407 seconds with exit status 0 (successful).
+  INFO [9afaea64] Running /usr/bin/env echo "Branch stable (at 82fa838be6a933482201144ffca06560dd76ce78) deployed as release 20200428221252 by petra" >> /var/data/production/babiccinrozvozjidel.cz.www/revisions.log as www-data@31.31.78.161
+ DEBUG [9afaea64] Command: cd /var/data/production/babiccinrozvozjidel.cz.www/releases && /usr/bin/env echo "Branch stable (at 82fa838be6a933482201144ffca06560dd76ce78) deployed as release 20200428221252 by petra" >> /var/data/production/babiccinrozvozjidel.cz.www/revisions.log
+  INFO [9afaea64] Finished in 0.512 seconds with exit status 0 (successful).

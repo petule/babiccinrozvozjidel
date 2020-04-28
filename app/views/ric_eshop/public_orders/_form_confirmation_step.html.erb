@@ -1,0 +1,79 @@
+
+<!-- Price validity -->
+
+<% if @order.customer_location && @order.delivery_map_zone && @order.delivery_map_zone.order_below_min_price != true && @order.min_price.to_i > @order.basic_price.to_i %>
+	<div class="flash warning alert">
+		<%= t("activerecord.errors.models.ric_eshop/order.attributes.price.min_price_not_met", min_price: @order.min_price.to_i) %>
+		<%= f.checkbox_row :override_min_price, label: "Doplatit rozdíl (#{(@order.min_price.to_i-@order.basic_price.to_i).to_s} Kč)" %>
+	</div>
+	<hr/>
+<% end %>
+
+<!-- Order details -->
+
+<h2>Osobní údaje a způsob objednávky</h2>
+
+<div class="box">
+	<table class="show-table">
+		<tbody>
+			<tr>
+				<td>Jméno a příjmení (přezdívka):</td>
+				<td class="strong"><%= @order.customer_name %></td>
+			</tr>
+			<tr>
+				<td>Vaše e-mailová adresa:</td>
+				<td class="strong"><%= @order.customer_email %></td>
+			</tr>
+			<tr>
+				<td>Váš telefon:</td>
+				<td class="strong"><%= @order.customer_phone %></td>
+			</tr>
+		</tbody>
+	</table>
+	<hr/>
+	<table class="show-table">
+		<tbody>
+			<tr>
+				<td>Způsob doručení:</td>
+				<td class="strong"><%= @order.delivery_type_obj.label %> <%= @order.delivery_type == "in_person" ? "na adrese: #{setting_get("restaurant_address")}" : "" %></td>
+			</tr>
+			<% if @order.delivery_type == "delivery_service" %>
+				<tr>
+					<td>Čas doručení:</td>
+					<td class="strong"><%= @order.delivery_time_formatted %></td>
+				</tr>
+				<tr>
+					<td>Adresa doručení:</td>
+					<td class="strong"><%= @order.customer_location[:address] %></td>
+				</tr>
+			<% elsif @order.delivery_type == "in_person" %>
+				<tr>
+					<td>Čas osobního odběru:</td>
+					<td class="strong"><%= @order.delivery_time_formatted %></td>
+				</tr>
+			<% end %>
+      <% if @order.payment_type_obj %>
+        <tr>
+          <td>Způsob platby:</td>
+          <td class="strong"><%= @order.payment_type_obj.label %></td>
+        </tr>
+      <% end %>
+      <% bonus = 0 %>
+      <% if customer_signed_in? && @order.use_bonus.to_s == '1' %>
+        <% bonus = @order.used_bonus %>
+      <% end %>
+			<tr>
+				<td>Konečná cena:</td>
+        <td class="strong"><%= number_to_currency(@order.final_price - bonus, locale: :cs) %></td>
+			</tr>
+		</tbody>
+	</table>
+	<hr/>
+	<% if !@order.note.blank? %>
+		<p>Poznámka:</p>
+		<p class="strong"><%= @order.note %></p>
+	<% end %>
+</div>
+
+<!-- Delivery map conditions -->
+

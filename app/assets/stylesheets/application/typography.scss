@@ -1,0 +1,181 @@
+@import "variables";
+
+/*****************************************************************************/
+/* Global settings                                                           */
+/*****************************************************************************/
+
+html {
+	font-size: $base-font-size;
+	line-height: $base-line-height;
+}
+
+a {
+	color: black;
+	text-decoration: underline;
+}
+
+h1, h2, h3, h4, h5, h5 {
+	padding-top: 2px;
+	&.padded {
+		padding-top: 20px;
+		padding-bottom: 20px;
+	}
+}
+
+h1 {
+	font-size: 180%;
+	line-height: 130%;
+	font-weight: 700;
+	padding-top: 5px;
+	padding-bottom: 10px;
+	@media only screen and (max-width: $tablet-width) {
+		font-size: 130%;
+	}
+}
+
+h2 {
+	font-size: 130%;
+	line-height: 130%;
+	font-weight: 700;
+	padding-bottom: 10px;
+	@media only screen and (max-width: $tablet-width) {
+		font-size: 110%;
+	}
+}
+
+h3 {
+	font-size: 100%;
+	line-height: 130%;
+	font-weight: 700;
+	padding-bottom: 8px;
+}
+
+h4 {
+	font-size: 90%;
+	line-height: 130%;
+	font-weight: 700;
+	padding-bottom: 8px;
+}
+
+h1, h2, h3, h4 {
+	a {
+		color: inherit;
+		text-decoration: none;
+		&:hover { color: inherit; }
+	}
+}
+
+hr {
+	border: none;
+	border-top: 1px solid #c0c0c0;
+	margin: 20px 0 14px 0;
+	&:last-child {
+		display: none;
+	}
+}
+
+hr.homepage {
+	margin: 5px 0 9px 0;
+	border-top: 1px solid $green;
+}
+
+table {
+	border: 0;
+	margin-bottom: 5px;
+	tbody {
+		tr {
+			td {
+				font-size: $base-font-size;
+				border-top: 0;
+				padding: 0 0 2px 5px;
+				&:first-child {
+					font-weight: inherit;
+					padding: 0;
+				}
+			}
+		}
+	}
+
+	&.show-table {
+		tr {
+			td:first-child {
+				width: 30%;
+			}
+		}
+	}
+}
+
+label {
+	font-size: $base-font-size;
+}
+
+p {
+	line-height: $base-line-height;
+	margin-bottom: 5px;
+}
+
+/*****************************************************************************/
+/* Fix                                                                       */
+/*****************************************************************************/
+
+.fix-two-lines {
+	height: 45px;
+	overflow: hidden;
+	@media only screen and (max-width: $tablet-width) {
+		height: auto; 
+	}
+}
+
+.smaller.fix-two-lines {
+	height: 40px;
+}
+
+h3.fix-two-lines { 
+	height: auto;
+	min-height: 46px; 
+	@media only screen and (max-width: $tablet-width) {
+		min-height: 0;
+	}
+}
+
+.order:hover {
+  background-color: #ffb4b4;
+}
+
+.order {
+  border-bottom: 5px solid lightgray;
+}
+
+.order.one {
+  border-bottom: none;
+}
+
+.order.one:hover {
+  background-color: transparent;
+}
+
+.order, .order td {
+  font-size: 90%;
+}
+
+.order td b {
+  font-weight: bold;
+  font-size: 120%;
+}
+
+.order td {
+  border: 0 !important;
+}
+
+.order td:first-child {
+  padding: 8px;
+}
+
+.order td table, .order td table td {
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+.side {
+  width: 20rem !important;
+}

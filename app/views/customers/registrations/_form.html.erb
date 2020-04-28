@@ -1,0 +1,94 @@
+<%#= devise_error_messages! %>
+
+<div class="element">
+  <%= f.label :name_firstname %>
+  <% if resource.errors[:name_firstname].size > 0 %>
+      <span class="danger label"><%= resource.errors[:name_firstname][0] %></span>
+  <% end %>
+  <div class="field">
+    <%= f.text_field :name_firstname, autofocus: true, class: 'text input' %>
+  </div>
+</div>
+
+<div class="element">
+  <%= f.label :name_lastname %>
+  <% if resource.errors[:name_lastname].size > 0 %>
+      <span class="danger label"><%= resource.errors[:name_lastname][0] %></span>
+  <% end %>
+  <div class="field">
+    <%= f.text_field :name_lastname, class: 'text input' %>
+  </div>
+</div>
+
+<div class="element">
+  <%= f.label :email %>
+  <% if resource.errors[:email].size > 0 %>
+      <span class="danger label"><%= resource.errors[:email][0] %></span>
+  <% end %>
+  <div class="field">
+    <%= f.email_field :email, class: 'text input' %>
+  </div>
+</div>
+
+<div class="element">
+  <%= f.label :phone %>
+  <% if resource.errors[:phone].size > 0 %>
+      <span class="danger label"><%= resource.errors[:phone][0] %></span>
+  <% end %>
+  <div class="field">
+    <%= f.text_field :phone, class: 'text input' %>
+  </div>
+</div>
+
+
+
+<%
+  new_addresses = []
+  if !@address_params.nil? && @address_params.kind_of?(Array) && @address_params.count > 0
+    @address_params.each do |a|
+      new_addresses << a if a['id'] == ''
+    end
+  end
+
+  if resource.addresses.count <= 0
+      address_params = {}
+      address_params = new_addresses.shift if new_addresses.count > 0 
+%>
+    <%= render partial: 'customers/shared/address', locals: { address: Address.new(address_params), title: 'Hlavní (povinná)', errors: resource.errors } %>
+<% else %>
+  <% resource.addresses.order(:created_at => :asc).each do |address| %>
+      <%= render partial: 'customers/shared/address', locals: { address: address } %>
+  <% end %>
+<% end %>
+<%
+  address_params = {}
+  address_params = new_addresses.shift if new_addresses.count > 0
+%>
+<%= render partial: 'customers/shared/address', locals: { address: Address.new(address_params), title: 'Alternativní (volitelná)' } %>
+
+<div class="element">
+  <%= f.label :password %>
+  <% if resource.errors[:password].size > 0 %>
+      <span class="danger label"><%= resource.errors[:password][0] %></span>
+  <% end %>
+  <% if @minimum_password_length %>
+      <em>(minimum znaků: <%= @minimum_password_length %>)</em>
+  <% end %>
+  <% if password_change %>
+    <i>(nechte prázdné, pokud si nepřejete měnit heslo)</i>
+  <% end %>
+  <div class="field">
+    <%= f.password_field :password, autocomplete: "off", class: 'text input' %>
+  </div>
+</div>
+
+<div class="element">
+  <%= f.label :password_confirmation %>
+  <% if resource.errors[:password_confirmation].size > 0 %>
+      <span class="danger label"><%= resource.errors[:password_confirmation][0] %></span>
+  <% end %>
+  <div class="field">
+    <%= f.password_field :password_confirmation, autocomplete: "off", class: 'text input' %>
+  </div>
+</div>
+

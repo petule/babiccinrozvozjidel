@@ -1,0 +1,31 @@
+<% if Kitchen.instance.force_closed != true %>
+	<% if @session && !@session.delivery_map_zone.nil? %>
+		<div class="flash warning alert center">
+			<span class="big">
+				<% banner_address_big = setting_get("banner_address_big") %>
+				<% if banner_address_big %>
+					<%= 
+						banner_address_big
+							.gsub("{min_order_price}", number_to_currency(@session.min_order_price.to_s, locale: :cs))
+							.gsub("{delivery_price}", number_to_currency(@session.delivery_price.to_s, locale: :cs))
+					%>
+				<% end %>
+			</span>
+			<span class="normal">
+				<% banner_address_small = setting_get("banner_address_small") %>
+				<% if banner_address_small %>
+					<%= 
+						banner_address_small
+							.gsub("{min_order_price}", number_to_currency(@session.min_order_price.to_s, locale: :cs))
+							.gsub("{delivery_price}", number_to_currency(@session.delivery_price.to_s, locale: :cs))
+					%>
+				<% end %>
+			</span>
+		</div>
+	<% else %>
+		<div class="flash warning alert center">
+			<span class="big"><%= setting_get("banner_no_address_big") %></span>
+			<span class="normal"><%= setting_get("banner_no_address_small") %></span>
+		</div>
+	<% end %>
+<% end %>

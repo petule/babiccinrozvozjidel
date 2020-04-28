@@ -1,0 +1,92 @@
+<%
+  hash = SecureRandom.uuid
+  title ||= address.to_s
+%>
+<fieldset id="<%= hash %>">
+  <legend>Adresa: <%= title %></legend>
+
+  <% if defined?(errors) && errors[:address].size > 0 %>
+      <span class="danger label"><%= errors[:address][0] %></span>
+  <% end %>
+  
+  <%= hidden_field_tag "addresses[][id]", address.id.to_s %>
+  
+  <div class="title">
+    Vyhledat adresu:
+  </div>
+  <div id="address_location_<%= hash %>" class="field element">
+    <%= hidden_field_tag("addresses[][level]", address.level.to_s, class: "level") %>
+    <%= hidden_field_tag("addresses[][latitude]", address.latitude.to_s, class: "latitude") %>
+    <%= hidden_field_tag("addresses[][longitude]", address.longitude.to_s, class: "longitude") %>
+    <%= text_field_tag("addresses[][address]", address.address.to_s, class: "text input address", placeholder: "Zadejte Vaši adresu") %>
+  </div>
+  <script type="application/javascript">
+      $(document).ready(function() {
+          (new AddressLocation('<%= hash %>', {
+              bindSubmit: false,
+              onChange: function(addr_location) {
+                  var fieldset = $('#<%= hash %>');
+                  var street_input = $('.street', fieldset);
+                  var city_input = $('.city', fieldset);
+                  var zip_input = $('.zip', fieldset);
+                  
+                  var address = addr_location.address_input.val();
+                  var address_fields = address.match(/([^,]+),\s*([^,]+),\s*(\d\d\d\s*\d\d)\s+([^,]+),/);
+                  if (address_fields) {
+                      street_input.val(address_fields[1].trim());
+                      zip_input.val(address_fields[3].trim());
+                      city_input.val(address_fields[4].trim());
+                  } else {
+                      address_fields = address.match(/([^,]+),\s*(\d\d\d\s*\d\d)\s+([^,]+),/);
+                      if (address_fields) {
+                          street_input.val(address_fields[1].trim());
+                          zip_input.val(address_fields[2].trim());
+                          city_input.val(address_fields[3].trim());
+                      }
+                  }
+              }
+          })).ready();
+      });
+  </script>
+  
+  <div class="element">
+    <%= label_tag t('activerecord.attributes.customer.street') %>
+    <div class="field">
+      <%= hidden_field_tag "addresses[][street]", address.street.to_s, class: 'text input street' %>
+      <%= text_field_tag "_addresses[][street]", address.street.to_s, class: 'text input street', disabled: true %>
+    </div>
+  </div>
+  
+  <div class="element">
+    <%= label_tag t('activerecord.attributes.customer.city') %>
+    <div class="field">
+      <%= hidden_field_tag "addresses[][city]", address.city.to_s, class: 'text input city' %>
+      <%= text_field_tag "_addresses[][city]", address.city.to_s, class: 'text input city', disabled: true %>
+    </div>
+  </div>
+  
+  <div class="element">
+    <%= label_tag t('activerecord.attributes.customer.zip') %>
+    <div class="field">
+      <%= hidden_field_tag "addresses[][zip]", address.zip.to_s, class: 'text input zip' %>
+      <%= text_field_tag "_addresses[][zip]", address.zip.to_s, class: 'text input zip', disabled: true %>
+    </div>
+  </div>
+
+  <div class="element">
+    <%= label_tag t('activerecord.attributes.customer.note') %>
+    <div class="field">
+      <%= text_area_tag "addresses[][note]", address.note.to_s, class: 'text input note' %>
+    </div>
+  </div>
+  
+  <%= hidden_field_tag "addresses[][country]", 'Czech Republic' %>
+
+  <% if address.id.present? %>
+    <div class="element">
+      <div class="medium primary btn">
+        <%= link_to 'Odebrat adresu', addresses_path(address), method: :delete %>
+      </div>
+    </div>
+  <% end %>
+</fieldset>

@@ -1,0 +1,18 @@
+<div class="sb-slidebar sb-left sb-style-overlay">
+	<div class="controls">
+		<a class="sb-close"><i class="icon-cancel"></i></a>
+	</div>
+	<div class="menu">
+		<%= render_component @menu %>
+    
+    <h2 class="center">Uživatel</h2>
+    <%= render partial: 'shared/user_menu' %>
+    
+		<h2 class="center">Kategorie</h2>
+		<ul>
+			<% Tag.order(position: :asc).each do |tag| %>
+				<li class="<%= (@tag && @tag.id == tag.id ? "active" : "") %>"><%= link_to tag.name, main_app.tag_path(id: tag.id) %></li>
+			<% end %>
+		</ul>
+	</div>
+</div>

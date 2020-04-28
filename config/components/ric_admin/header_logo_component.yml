@@ -1,0 +1,5 @@
+# URL for logo link
+url: main_app.admin_root_path
+
+# Logo image
+image: admin_header_logo.png

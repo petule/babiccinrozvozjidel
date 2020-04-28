@@ -1,0 +1,7 @@
+<%= rug_index_table_for(@product.special_actions.order(position: :asc), { 
+	title: :string,
+	color: :enum,
+}, paths: {
+	move: "main_app.move_admin_special_action_path",
+	destroy: "main_app.admin_special_action_path",
+}, moving: true ) %>

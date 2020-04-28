@@ -1,0 +1,10 @@
+<%= render layout: "ric_admin/layouts/with_right_side" do %>
+	<%= rug_index_table_for(@tags, { 
+		name: :string,
+	}, paths: {
+		show: "main_app.admin_tag_path", 
+		edit: "main_app.edit_admin_tag_path", 
+		move: "main_app.move_admin_tag_path", 
+		destroy: "main_app.admin_tag_path"
+	}, moving: true, summary: true ) %>
+<% end %>

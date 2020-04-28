@@ -1,0 +1,8 @@
+<%= f.nested_fields_for :special_actions do |builder| %>
+	<%= render partial: "form_special_action", locals: { f: builder } %>
+<% end %>
+<div class="element">
+	<div class="field right">
+		<div class="medium default btn icon-left icon-plus"><%= f.add_nested_fields_link :special_actions, t("headers.admin.special_actions.new") %></div>
+	</div>
+</div>

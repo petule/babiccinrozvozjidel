@@ -1,0 +1,5 @@
+<%= rug_menu_for(@delivery_map, name: "related") do |m| %>
+	<% if @delivery_map && !@delivery_map.new_record? %>
+		<%= m.item t("headers.admin.delivery_map_zones.new"), main_app.new_admin_delivery_map_zone_path(delivery_map_id: @delivery_map.id), icon: "plus" %>
+	<% end %>
+<% end %>

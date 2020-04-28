@@ -1,0 +1,17 @@
+<%= render layout: "ric_admin/layouts/with_right_side" do %>
+    <%= form_for(@order) do |f| %>
+        <table class="show-table">
+          <tbody>
+            <tr>
+              <td>
+                Stav objednávky
+              </td>
+              <td>
+                <%= f.select :process_state, RicEshop::Order.process_state_attributes_for_select %>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+        <%= f.submit 'Uložit', class: 'medium btn primary' %>
+    <% end %>
+<% end %>

@@ -1,0 +1,40 @@
+<div class="box">
+	<div class="row">
+		<div class="eight columns">
+			<h1 class="center-on-tablet">
+				<%= @restaurant.name_fancy %>
+				<span class="labels">
+					<% @restaurant.special_actions.order(position: :asc).each do |special_action| %>
+						<span class="label default color-<%= special_action.color %>"><%= special_action.title %></span>
+					<% end %>
+				</span>
+			</h1>
+			<div class="perex center-on-tablet hide-on-tablet"><%= @restaurant.perex.html_safe if @restaurant.perex %></div>
+			<div class="description hide-on-tablet"><%= @restaurant.content.html_safe if @restaurant.content %></div>
+		</div>
+		<div class="four columns center">
+			<div class="hide-on-tablet">
+				<% if @restaurant.logo.exists? %>
+					<%= image_tag(@restaurant.logo.url(:full)) %>
+				<% end %>
+			</div>
+		</div>
+	</div>
+	<hr/>
+	<table>
+		<tbody>
+			<tr>
+				<td>Max. čas doručení:</td>
+				<td class="strong"><%= @restaurant.max_delivery_time %></td>
+			</tr>
+			<tr>
+				<td>Platba:</td>
+				<td class="strong"><%= @restaurant.payment_types %></td>
+			</tr>
+			<tr>
+				<td>Stravenky:</td>
+				<td class="strong"><%= @restaurant.voucher_types %></td>
+			</tr>
+		</tbody>
+	</table>
+</div>

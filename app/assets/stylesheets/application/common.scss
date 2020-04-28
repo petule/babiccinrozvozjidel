@@ -1,0 +1,156 @@
+@import "variables";
+
+/*****************************************************************************/
+/* Alignment                                                                 */
+/*****************************************************************************/
+
+.center { text-align: center; }
+.right { text-align: right; }
+.left { text-align: left; }
+.justify { text-align: justify; }
+
+.center-on-pc { 
+	text-align: center; 
+	@media only screen and (max-width: $tablet-width) { text-align: left; }
+}
+
+.left-on-pc { 
+	text-align: left; 
+	@media only screen and (max-width: $tablet-width) { text-align: left; }
+}
+
+.right-on-pc { 
+	text-align: right; 
+	@media only screen and (max-width: $tablet-width) { text-align: left; }
+}
+
+.justify-on-pc { 
+	text-align: justify; 
+	@media only screen and (max-width: $tablet-width) { text-align: left; }
+}
+
+.center-on-tablet { 
+	@media only screen and (max-width: $tablet-width) { text-align: center; }
+}
+
+.left-on-tablet { 
+	@media only screen and (max-width: $tablet-width) { text-align: left; }
+}
+
+.right-on-tablet { 
+	@media only screen and (max-width: $tablet-width) { text-align: right; }
+}
+
+.justify-on-tablet { 
+	@media only screen and (max-width: $tablet-width) { text-align: justify; }
+}
+
+.valign {
+	display: table;
+	> div {
+		display: table-cell;
+		vertical-align: middle;
+		padding-left: 20px;
+		&:first-child {
+			padding-left: 0;
+		}
+	}
+	&:before {
+		display: none;
+	}
+	@media only screen and (max-width: $tablet-width) { 
+		display: block;
+		> div {
+			display: block;
+			padding-left: 0;
+			padding-top: 20px;
+			text-align: center;
+			&:first-child {
+				padding-top: 0;
+			}
+		}
+	}
+}
+
+/*****************************************************************************/
+/* Visibility                                                                */
+/*****************************************************************************/
+
+.hide-on-pc {
+	display: none;
+}
+
+.show-on-pc {
+	display: inherit;
+}
+
+.hide-on-tablet {
+	@media only screen and (max-width: $tablet-width) { display: none; }
+}
+
+.show-on-tablet {
+	@media only screen and (max-width: $tablet-width) { display: inherit; }
+}
+
+/*****************************************************************************/
+/* Text / font                                                               */
+/*****************************************************************************/
+
+.strong {
+	font-weight: 700;
+}
+
+.small {
+	font-size: 80%;
+	line-height: 130%;
+	p { font-size: inherit; }
+}
+
+.smaller {
+	font-size: 90%;
+	line-height: 130%;
+	p { font-size: inherit; }
+}
+
+/*****************************************************************************/
+/* Float                                                                     */
+/*****************************************************************************/
+
+.float-left-on-pc { 
+	float: left; 
+	@media only screen and (max-width: $tablet-width) { float: none; }
+}
+
+.float-right-on-pc { 
+	float: right; 
+	@media only screen and (max-width: $tablet-width) { float: none; }
+}
+
+.float-left-on-tablet { 
+	@media only screen and (max-width: $tablet-width) { float: left; }
+}
+
+.float-right-on-tablet { 
+	@media only screen and (max-width: $tablet-width) { float: right; }
+}
+
+[disabled] {
+  background-color: lightgray !important;
+  color: black !important;
+}
+
+.tab-content .show-table {
+  background-color: transparent;
+}
+
+.process_created {
+  background-color: lightblue;
+}
+
+.process_closed {
+  background-color: lightgreen;
+}
+
+.process_canceled {
+  background-color: red;
+}

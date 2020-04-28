@@ -1,0 +1,1 @@
+psql -U postgres -d babidlo_development -a -f /home/petra/dump.sql

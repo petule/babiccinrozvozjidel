@@ -1,0 +1,55 @@
+<div class="row">
+	<% @products_ticker.products.each do |product| %>
+		<% if product.restaurant %>
+			<div class="four columns product">
+				<div class="box product-ticker">
+					<%= form_tag(ric_eshop_public.cart_add_path) do %>
+						<%= hidden_field_tag :product_id, product.id %>
+						<%= hidden_field_tag :restaurant_id, (product.restaurant ? product.restaurant.id : nil) %>
+						<%= hidden_field_tag :return_path, main_app.restaurant_path(id: product.restaurant) %>
+						<h2 class="header">Nejoblíbenější jídlo <span class="rating five-stars"></span></h2>
+						<div class="row">
+							<% first_product_photo = product.product_photos.first %>
+							<% if first_product_photo && first_product_photo.picture.exists? %>
+								<div class="picture-on-left three columns">
+									<%#= image_tag(first_product_photo.picture.url(:full), class: "zoomify") %>
+									<%= link_to first_product_photo.picture.url(:full), class: "fancybox" do %>
+										<%= image_tag(first_product_photo.picture.url(:thumb)) %>
+									<% end %>
+								</div>
+							<% end %>
+							<div class="<%= (first_product_photo && first_product_photo.picture.exists? ? "nine" : "twelve") %> columns">
+								<h3 class="fix-two-lines"><%= link_to product.name_fancy, main_app.restaurant_path(id: product.restaurant) %></h3>
+								<div class="labels">
+									<% product.special_actions.order(position: :asc).each do |special_action| %>
+										<span class="label default color-<%= special_action.color %>"><%= special_action.title %></span>
+									<% end %>
+								</div>
+								<div class="smaller fix-two-lines"><%= truncate_html(strip_tags(product.content), length: 60) if product.content %></div>
+								<div class="navigation row">
+									<div class="five columns float-left-on-tablet">
+										<p><%= link_to "zobrazit více", main_app.restaurant_path(id: product.restaurant) %></p>
+									</div>
+									<div class="four columns float-right-on-tablet">
+										<p class="strong"><%= number_to_currency(product.price, locale: :cs) %></p>
+									</div>
+									<div class="three columns right-on-pc hide-on-tablet">
+										<% if product.restaurant.currently_open && (@session.delivery_map.nil? || @session.delivery_map.id == product.restaurant.delivery_map_id) %>
+											<span><%= button_tag "", class: "as-icon icon-basket" %></span>
+										<% end %>
+									</div>
+								</div>
+								<div class="hide-on-pc show-on-tablet center">
+									<% if product.restaurant.currently_open && (@session.delivery_map.nil? || @session.delivery_map.id == product.restaurant.delivery_map_id) %>
+										<hr/>
+										<div class="medium primary btn"><%= button_tag t("general.action.add_to_cart") %></div>
+									<% end %>
+								</div>
+							</div>
+						</div>
+					<% end %>
+				</div>
+			</div>
+		<% end %>
+	<% end %>
+</div>

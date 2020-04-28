@@ -1,0 +1,70 @@
+<%= render partial: "shared/restaurant" %>
+
+<div class="box">
+
+	<!-- Map -->
+	<% if @restaurant.delivery_map %>
+		<h2 class="center">Aktuální mapa rozvozu</h2>
+		<%= rug_map :delivery_map_zones, {zoom: 12, latitude: 50.0742539, longitude: 14.3683497, scrollwheel: false} do |m| %>
+			<% @restaurant.delivery_map.delivery_map_zones.order(level: :desc).each do |delivery_map_zone| %>
+				<% if delivery_map_zone.polygon %>
+					<%= m.polygon("delivery_map_zone_" + delivery_map_zone.id.to_s, delivery_map_zone.polygon) %>
+				<% end %>
+				<% if @session && @session.location %>
+					<%= m.marker("session_location", @session.location[:latitude], @session.location[:longitude]) %>
+					<%= m.marker_label("session_location", "Vaše aktuální pozice") %>
+				<% end %>
+			<% end %>
+		<% end %>
+	<% end %>
+
+	<!-- Menu -->
+	<h2 class="center">Nabídka rychlých jídel</h2>
+	<% if !@restaurant.currently_open %>
+		<div class="flash danger alert">
+			<%= t("activerecord.errors.models.ric_eshop/cart.attributes.cart_items.restaurant_closed") %>
+		</div>
+	<% elsif !@cart.delivery_map.nil? && @cart.delivery_map.id != @restaurant.delivery_map_id %>
+		<div class="flash danger alert">
+			<%= t("activerecord.errors.models.ric_eshop/cart.attributes.cart_items.delivery_maps_crossed") %>
+		</div>
+	<% end %>
+	<hr/>
+	<% RicAssortment.product_model.from_category(@restaurant.product_collection_id).order(position: :asc).each do |product| %>
+		<%= render partial: "shared/product", locals: { product: product, restaurant: @restaurant } %>
+	<% end %>
+
+	<h2 class="center">Dokončení rychlé objednávky</h2>
+
+	<div class="box">
+
+		<!-- Order form -->
+		<% 
+			online_payment_limit = RicWebsite::Helpers::SettingHelper.setting_get("online_payment_limit")
+			online_payment_restricted = RicWebsite::SettingsCollection.online_payment_restricted
+			@force_online_payment = online_payment_restricted && !online_payment_limit.blank? && (@cart.final_price.to_i > online_payment_limit.to_i)
+			@order = RicEshop.order_model.new(session_id: @cart.session_id) 
+			@order.customer_location = @session.location if @session && @session.location
+			@order.delivery_type = "delivery_service"
+			@order.payment_type = "online" if @force_online_payment
+		%>
+		<%= rug_form_for(@order, create_url: "ric_eshop_public.orders_path") do |f| %>
+
+			<!-- Content in form -->
+			<%= render partial: "ric_eshop/public_orders/form_basic_step", locals: { f: f } %>
+			
+			<!-- Navigation buttons -->
+			<% if @cart.empty? %>
+				<div class="flash warning alert"><%= t("activerecord.errors.models.ric_eshop/cart.attributes.cart_items.empty") %></div>
+			<% else %>
+				<hr/>
+				<div class="clearfix center">
+					<div class="large primary btn"><%= f.submit "Dále na potvrzení objednávky" %></div>
+				</div>
+			<% end %>
+
+		<% end %>
+		
+	</div>
+
+</div>

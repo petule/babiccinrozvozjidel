@@ -1,0 +1,142 @@
+cs:
+
+  headers:
+
+    ric_website:
+      admin_pages:
+        index: "Stránky"
+        show: "Detail stránky"
+        new: "Nová stránka"
+        create: "Nová stránka"
+        edit: "Upravit stránku"
+        update: "Upravit stránku"
+        destroy: "Smazat stránku"
+        basic: "Základ stránky"
+        design: "Vzhled stránky"
+        meta: "Meta informace"
+        page_blocks: "Textové bloky"
+        menus: "Navázaná menu"
+        structure: "Struktura okolních stránek"
+        children: "Podřazené stránky"
+      admin_page_blocks:
+        show: "Detail textového bloku"
+        new: "Nový textový blok"
+        create: "Nový textový blok"
+        edit: "Upravit textový blok"
+        update: "Upravit textový blok"
+        destroy: "Smazat textový blok"
+      admin_page_menu_relations:
+        edit: "Navázat menu"
+        update: "Navázat menu"
+        destroy: "Odebrat menu"
+      admin_menus:
+        index: "Menu"
+        show: "Detail menu"
+        new: "Nové menu"
+        create: "Nové menu"
+        edit: "Upravit menu"
+        update: "Upravit menu"
+        destroy: "Smazat menu"
+        pages: "Navázané stránky"
+      admin_menu_page_relations:
+        edit: "Navázat stránky"
+        update: "Navázat stránky"
+        destroy: "Odebrat stránku"
+      admin_texts:
+        index: "Textové stránky"
+        show: "Detail textové stránky"
+        new: "Nová textová stránka"
+        create: "Nová textová stránka"
+        edit: "Upravit textovou stránku"
+        update: "Upravit textovou stránku"
+        destroy: "Smazat textovou stránku"
+      admin_settings:
+        show: "Nastavení"
+        edit: "Upravit nastavení"
+        update: "Upravit nastavení"
+
+  activerecord:
+    attributes:
+      ric_website/page:
+        title: Nadpis
+        key: Identifikující klíč
+        parent: Nadřazená stránka
+        parent_id: Nadřazená stránka
+        nature: Obsah stránky
+        model: Navázaný záznam
+        model_id: Navázaný záznam
+        url: Odkaz
+        background: Pozadí
+        layout: Šablona
+        meta_title: Nadpis (meta)
+        meta_description: Popis (meta)
+        menus: Navázaná menu
+      ric_website/page_block:
+        page_id: Stránka
+        page: Stránka
+        key: Identifikující klíč
+        subject: Navázaný záznam
+        subject_id: Navázaný záznam
+        title: Nadpis
+        content: Obsah
+        text_attachments: Přílohy
+      ric_website/menu:
+        key: Identifikující klíč
+        key_values:
+          main: Hlavní menu
+          footer: Patičkové menu
+        name: Jméno
+      ric_website/text:
+        key: Identifikující klíč
+        title: Nadpis
+        content: Obsah
+        text_attachments: Přílohy
+      ric_website/setting:
+        key: Identifikující klíč
+        value: Hodnota
+        kind: Typ
+        kind_values:
+          string: Textový řetězec
+          integer: Celé číslo
+          enum: Výčtový typ
+          integer_range: Rozsah mezi celými čísly
+          double_range: Rozsah mezi desetinnými čísly
+        category: Kategorie
+    notices:
+      models:
+        ric_website/page:
+          create: "Stránka byla úspěšně vytvořena."
+          update: "Stránka byla úspěšně upravena."
+          destroy: "Stránka byla úspěšně smazána."
+          move: "Stránka byla úspěšně přesunuta."
+          bind_menu: "Vybraná menu byla úspěšně navázána."
+          unbind_menu: "Vybrané menu bylo úspěšně odebráno."
+        ric_website/page_block:
+          create: "Blok byl úspěšně vytvořen."
+          update: "Blok byl úspěšně upraven."
+          destroy: "Blok byl úspěšně smazán."
+        ric_website/menu:
+          create: "Menu bylo úspěšně vytvořeno."
+          update: "Menu bylo úspěšně upraveno."
+          destroy: "Menu bylo úspěšně smazáno."
+          bind_page: "Vybrané stránky byly úspěšně navázány."
+          unbind_page: "Vybrané stránky byly úspěšně odebrány."
+        ric_website/text:
+          create: "Textová stránka byla úspěšně vytvořena."
+          update: "Textová stránka byla úspěšně upravena."
+          destroy: "Textová stránka byla úspěšně smazána."
+        ric_website/setting:
+          update: "Nastavení bylo úspěšně upraveno."
+    errors:
+      models:
+        ric_website/page:
+          not_found: "Stránka nebyla nalezena."
+        ric_website/page_block:
+          not_found: "Blok nebyl nalezen."
+          attributes:
+            page_id:
+              blank: "Vyberte stránku."
+        ric_website/menu:
+          not_found: "Menu nebylo nalezeno."
+        ric_website/text:
+          not_found: "Textová stránka nebyla nalezena."

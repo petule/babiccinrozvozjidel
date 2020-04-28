@@ -1,0 +1,5 @@
+<% if @restaurant.is_a?(FastRestaurant) %>
+	<%= render partial: "show_fast_restaurant" %>
+<% else %>
+	<%= render partial: "show_standard_restaurant" %>
+<% end %>

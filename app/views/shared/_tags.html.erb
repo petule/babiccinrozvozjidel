@@ -1,0 +1,7 @@
+<div class="tags">
+	<ul>
+		<% Tag.order(position: :asc).each do |tag| %>
+			<li class="<%= (@tag && @tag.id == tag.id ? "active" : "") %>"><%= link_to tag.name, main_app.tag_path(id: tag.id) %></li>
+		<% end %>
+	</ul>
+</div>

@@ -1,0 +1,74 @@
+<p>Dobrý den, děkujeme za nákup na portálu Babiččin rozvoz jídel. Vaše objednávka byla přijata, probíhá její příprava a doručení.</p>
+
+<h3>Objednané položky</h3>
+<table style="width: 100%">
+	<% last_restaurant = nil %>
+	<% @order.order_items.order(restaurant_id: :asc, created_at: :asc).each do |order_item| %>
+		<tr>
+			<td>
+				<% if order_item.restaurant %>
+					<% if last_restaurant.nil? || order_item.restaurant.id != last_restaurant.id %>
+						<%= order_item.restaurant.name_fancy %>
+					<% end %>
+					<% last_restaurant = order_item.restaurant %>
+				<% end %>
+			</td>
+			<td><%= order_item.product_name_fancy + (order_item.sub_product_names ? " + " + order_item.sub_product_names.join(", ") : "") %></td>
+			<td><%= order_item.amount %> ks</td>
+			<td><%= number_to_currency(order_item.price) %></td>
+		</tr>
+	<% end %>
+	<% if @order.supplement_price > 0 %>
+		<tr>
+			<td></td>
+			<td colspan="2">Doplatek do minimální ceny</td>
+			<td><%= number_to_currency(@order.supplement_price) %></td>
+		</tr>
+	<% end %>
+  <% if @order.used_bonus > 0 %>
+      <tr>
+        <td></td>
+        <td colspan="2">Bonus</td>
+        <td>-<%= number_to_currency(@order.used_bonus) %></td>
+      </tr>
+  <% end %>
+	<tr>
+		<td></td>
+		<td colspan="2">Celkem</td>
+		<td><strong><%= number_to_currency(@order.final_price - @order.used_bonus) %></strong></td>
+	</tr>
+</table>
+<h3>Doručení a platba</h3>
+<table>
+	<tr>
+		<td>Způsob doručení:</td>
+		<td><%= @order.delivery_type_obj.label %> <%= @order.delivery_type == "in_person" ? "na adrese: #{setting_get("restaurant_address")}" : "" %></td>
+	</tr>
+	<% if @order.delivery_type == "delivery_service" %>
+		<tr>
+			<td>Čas doručení:</td>
+			<td><%= @order.delivery_time_formatted %></td>
+		</tr>
+		<tr>
+			<td>Adresa doručení:</td>
+			<td><%= @order.customer_location[:address] %></td>
+		</tr>
+	<% else %>
+		<tr>
+			<td>Čas osobního odběru:</td>
+			<td><%= @order.delivery_time_formatted %></td>
+		</tr>
+	<% end %>
+  <% if @order.payment_type_obj %>
+    <tr>
+      <td>Způsob platby:</td>
+      <td><%= @order.payment_type_obj.label %></td>
+    </tr>
+  <% end %>
+</table>
+<% if !@order.note.blank? %>
+	<h3>Poznámka</h3>
+	<p><%= @order.note %></p>
+<% end %>
+
+<p>V případě jakéhokoliv problému nás neváhejte kontaktovat na telefonu <%= setting_get("restaurant_phone") %>.</p>

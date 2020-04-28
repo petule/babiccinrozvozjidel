@@ -1,0 +1,11 @@
+<%= render layout: "ric_admin/layouts/with_right_side" do %>
+	<%= rug_index_table_for(@texts, { 
+		title: :string,
+		key: :string,
+		content: { type: :text, strip_tags: true },
+	}, paths: {
+		show: :text_path,
+		edit: :edit_text_path,
+		destroy: :text_path
+	}, summary: true ) %>
+<% end %>

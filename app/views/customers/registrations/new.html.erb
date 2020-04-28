@@ -1,0 +1,30 @@
+<h2>Registrace</h2>
+
+<%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+  <%= render partial: 'form', locals: { f: f, password_change: false } %>
+
+    <div class="element">
+      <%= f.check_box :personal_data_agreement %>
+      <%= f.label :personal_data_agreement, class: 'checkbox-label' %>
+      <% if resource.errors[:personal_data_agreement].size > 0 %>
+          <span class="danger label"><%= resource.errors[:personal_data_agreement][0] %></span>
+      <% end %>
+    </div>
+
+    <div class="element">
+      <%= f.check_box :terms_agreement %>
+      <%= f.label :terms_agreement, class: 'checkbox-label' %>
+      <% if resource.errors[:terms_agreement].size > 0 %>
+          <span class="danger label"><%= resource.errors[:terms_agreement][0] %></span>
+      <% end %>
+    </div>
+
+    <br />
+    <div class="actions element">
+      <div class="medium primary btn">
+        <%= f.submit 'Registrovat se' %>
+      </div>
+    </div>
+<% end %>
+
+<%= render "customers/shared/links" %>

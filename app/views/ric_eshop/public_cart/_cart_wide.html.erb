@@ -1,0 +1,53 @@
+<table class="cart-items wide">
+	<% last_restaurant = nil %>
+	<% @cart.cart_items.order(restaurant_id: :asc, created_at: :asc).each do |cart_item| %>
+		<tr class="product">
+			<td class="restaurant">
+				<% if cart_item.restaurant %>
+					<% if last_restaurant.nil? || cart_item.restaurant.id != last_restaurant.id %>
+						<%= link_to cart_item.restaurant.name_fancy, main_app.restaurant_path(id: cart_item.restaurant.id) %>
+					<% end %>
+					<% last_restaurant = cart_item.restaurant %>
+				<% end %>
+			</td>
+			<td class="name"><%= cart_item.product.name_fancy %></td>
+			<td class="amount right"><%= cart_item.amount %> ks</td>
+			<td class="price right"><%= number_to_currency(cart_item.price, locale: :cs) %></td>
+			<td class="action"><%= link_to "<i class=\"icon-plus\"></i>".html_safe, ric_eshop_public.cart_add_path(product_id: cart_item.product_id, sub_product_ids: (cart_item.sub_product_ids ? cart_item.sub_product_ids.join(",") : nil), restaurant_id: cart_item.restaurant_id), rel: "nofollow", class: "add" %></td>
+			<td class="action"><%= link_to "<i class=\"icon-cancel\"></i>".html_safe, ric_eshop_public.cart_remove_path(product_id: cart_item.product_id, sub_product_ids: (cart_item.sub_product_ids ? cart_item.sub_product_ids.join(",") : nil), restaurant_id: cart_item.restaurant_id), rel: "nofollow", class: "remove" %></td>
+		</tr>
+		<% if cart_item.sub_product_ids %>
+			<% cart_item.sub_product_ids.each_with_index do |sub_product, index| %>
+				<tr class="sub-product">
+					<td class=""></td>
+					<td class="name" colspan="3"><%= cart_item.sub_product_names[index] %></td>
+					<td class="" colspan="2"></td>
+				</tr>
+			<% end %>
+		<% end %>
+	<% end %>
+	<% @cart.virtual_items.each do |virtual_item| %>
+		<tr class="product">
+			<td class=""></td>
+			<td class="name" colspan="2"><%= virtual_item.name %></td>
+			<td class="price"><%= number_to_currency(virtual_item.price, locale: :cs) %></td>
+			<td class="" colspan="2"></td>
+		</tr>
+	<% end %>
+  <% bonus = 0 %>
+  <% p @order %>
+  <% if customer_signed_in? && defined?(@order) && @order.use_bonus.to_s == '1' %>
+    <% bonus = @order.used_bonus %>
+    <tr class="product">
+      <td></td>
+      <td class="name" colspan="2">Bonus</td>
+      <td class="price">-<%= number_to_currency(bonus, locale: :cs) %></td>
+    </tr>
+  <% end %>
+	<tr class="total">
+		<td class=""></td>
+		<td class="" colspan="2">Celkem</td>
+		<td class="price"><%= number_to_currency(@cart.final_price - bonus, locale: :cs) %></td>
+		<td class="" colspan="2"></td>
+	</tr>
+</table>

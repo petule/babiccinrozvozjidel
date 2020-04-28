@@ -1,0 +1,11 @@
+<%= render layout: "ric_admin/layouts/with_right_side" do %>
+	<%= rug_index_table_for(@delivery_maps, { 
+		name: :string,
+		restrict_zone: :boolean,
+		#order_below_min_price: :boolean,
+	}, paths: {
+		show: "main_app.admin_delivery_map_path", 
+		edit: "main_app.edit_admin_delivery_map_path", 
+		destroy: "main_app.admin_delivery_map_path"
+	}, summary: true ) %>
+<% end %>

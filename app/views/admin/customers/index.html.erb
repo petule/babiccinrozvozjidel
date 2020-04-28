@@ -1,0 +1,11 @@
+<%= render layout: "ric_admin/layouts/with_right_side" do %>
+<%= rug_index_table_for(@customers, {
+    name: :string,
+    email: :string,
+    phone: :string,
+    bonus: :currency
+}, paths: {
+    show: "main_app.admin_customer_path",
+    edit: "main_app.edit_admin_customer_path",
+}, moving: false, summary: true) %>
+<% end %>

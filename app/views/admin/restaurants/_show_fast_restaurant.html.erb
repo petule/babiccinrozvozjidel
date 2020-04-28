@@ -1,0 +1,78 @@
+<section class="tabs pill">
+	<ul class="tab-nav">
+		<li class="active"><a href="#"><%= t("headers.admin.restaurants.identification") %></a></li>
+		<li><a href="#"><%= t("headers.admin.restaurants.special_actions") %></a></li>
+		<li><a href="#"><%= t("headers.admin.restaurants.pictures") %></a></li>
+		<li><a href="#"><%= t("headers.admin.restaurants.opening_hours") %></a></li>
+		<li><a href="#"><%= t("headers.admin.restaurants.technicalities") %></a></li>
+		<li><a href="#"><%= t("headers.admin.restaurants.delivery_maps") %></a></li>
+	</ul>
+	<div class="tab-content active">
+		<%= rug_show_table_for(@restaurant, { 
+			name_fancy: :string,
+			product_collection: { type: :belongs_to, label: :name, path: "ric_assortment_admin.product_category_path" },
+			perex: :string,
+			assortment: :string,
+			content: :text,
+			currently_open: { type: :state, bool_as_enum: true },
+			hidden: { type: :state, bool_as_enum: true },
+		}) %>
+	</div>
+	<div class="tab-content">
+		<%= rug_index_table_for(@restaurant.special_actions.order(position: :asc), { 
+			title: :string,
+			color: :enum,
+		}, paths: {
+			move: "main_app.move_admin_special_action_path",
+			destroy: "main_app.admin_special_action_path",
+		}, moving: true ) %>
+	</div>
+	<div class="tab-content">
+		<%= rug_show_table_for(@restaurant, { 
+			logo: { type: :picture, thumb_style: :full },
+			show_logo_over_profile_picture: :boolean,
+			profile_picture: { type: :picture, thumb_style: :full, force_no_cache: true },
+			background_picture: { type: :picture, thumb_style: :thumb }
+		}) %>
+	</div>
+	<div class="tab-content">
+		<%= rug_show_table_for(@restaurant, { 
+			opening_hours_monday: :range,
+			opening_hours_tuesday: :range,
+			opening_hours_wednesday: :range,
+			opening_hours_thursday: :range,
+			opening_hours_friday: :range,
+			opening_hours_saturday: :range,
+			opening_hours_sunday: :range,
+			force_closed: { type: :state, bool_as_enum: true },
+			#force_closed_note: :string,
+		}) %>
+	</div>
+	<div class="tab-content">
+		<%= rug_show_table_for(@restaurant, { 
+			max_delivery_time: :string,
+			payment_types: :string,
+			voucher_types: :string
+		}) %>
+	</div>
+	<div class="tab-content">
+		<%= rug_show_table_for(@restaurant, { 
+			delivery_map: { type: :belongs_to, label: :name, path: "main_app.admin_delivery_map_path" },
+		}) %>
+		<% if @restaurant.delivery_map %>
+			<%= rug_map :delivery_map_zones do |m| %>
+				<% @restaurant.delivery_map.delivery_map_zones.order(level: :desc).each do |delivery_map_zone| %>
+					<% if delivery_map_zone.polygon %>
+						<%= m.polygon("delivery_map_zone_" + delivery_map_zone.id.to_s, delivery_map_zone.polygon) %>
+						<%= m.polygon_label("delivery_map_zone_" + delivery_map_zone.id.to_s, delivery_map_zone.name) %>
+					<% end %>
+				<% end %>
+			<% end %>
+		<% end %>
+	</div>
+</section>
+<script>//<![CDATA[
+	$('.tabs').on('gumby.onChange', function(e, index) {
+		rug_map_884a82699929d6260f5594f926c6da7d9aa66495.repair();
+	})
+//]]></script>

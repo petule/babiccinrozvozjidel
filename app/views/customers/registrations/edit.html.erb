@@ -1,0 +1,91 @@
+<section class="tabs pill">
+  <ul class="tab-nav">
+    <li class="active"><a href="#">Osobní informace</a></li>
+    <li><a href="#">Úprava profilu</a></li>
+  </ul>
+  <div class="tab-content active">
+    <%= rug_show_table_for(resource, {
+        name: :string,
+        email: :string,
+        phone: :string,
+        bonus: :currency,
+        created_at: :string,
+        updated_at: :string        
+    }) %>
+    
+    <h2>Poslední objednávky</h2>
+    <% @orders.each do |order| %>
+        <table class="cart-items wide">
+          <% last_restaurant = nil %>
+          <% order.order_items.order(restaurant_id: :asc, created_at: :asc).each do |order_item| %>
+              <tr class="product">
+                <td class="restaurant">
+                  <% if order_item.restaurant %>
+                      <% if last_restaurant.nil? || order_item.restaurant.id != last_restaurant.id %>
+                          <%= link_to order_item.restaurant.name_fancy, main_app.restaurant_path(id: order_item.restaurant.id) %>
+                      <% end %>
+                      <% last_restaurant = order_item.restaurant %>
+                  <% end %>
+                </td>
+                <td class="name"><%= order_item.product_name %></td>
+                <td class="amount right"><%= order_item.amount %> ks</td>
+                <td class="price right"><%= number_to_currency(order_item.price, locale: :cs) %></td>
+              </tr>
+              <% if order_item.sub_product_ids %>
+                  <% order_item.sub_product_ids.each_with_index do |sub_product, index| %>
+                      <tr class="sub-product">
+                        <td class=""></td>
+                        <td class="name" colspan="3"><%= order_item.sub_product_names[index] %></td>
+                        <td class="" colspan="2"></td>
+                      </tr>
+                  <% end %>
+              <% end %>
+          <% end %>
+          
+          
+          <% bonus = order.used_bonus %>
+          <tr class="product">
+            <td></td>
+            <td class="name" colspan="2">Bonus</td>
+            <td class="price">-<%= number_to_currency(bonus, locale: :cs) %></td>
+          </tr>
+          <tr class="total">
+            <td class=""></td>
+            <td class="" colspan="2">Celkem</td>
+            <td class="price"><%= number_to_currency(order.final_price - bonus, locale: :cs) %></td>
+            <td class="" colspan="2"></td>
+          </tr>
+        </table>
+    <% end %>
+    <div class="medium secondary btn pull_right">
+      <%= link_to 'Zpět', :back %>
+    </div>
+  </div>
+  <div class="tab-content">
+    <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
+        <%= render partial: 'form', locals: { f: f, password_change: true } %>
+
+        <div class="element">
+          <%= f.label :current_password %> <i>(pro potvrzení změn zadejte své současné heslo)</i>
+          <% if resource.errors[:current_password].size > 0 %>
+              <span class="danger label"><%= resource.errors[:current_password][0] %></span>
+          <% end %>
+          <div class="field">
+            <%= f.password_field :current_password, autocomplete: "off", class: 'text input' %>
+          </div>
+        </div>
+
+        <br />
+        <div class="actions element">
+          <div class="medium primary btn pull_left">
+            <%= f.submit 'Aktualizovat' %>
+          </div>
+          <div class="medium secondary btn pull_right">
+            <%= link_to 'Zpět', :back %>
+          </div>
+        </div>
+    <% end %>    
+  </div>
+</section>
+
+

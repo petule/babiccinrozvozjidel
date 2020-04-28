@@ -1,0 +1,20 @@
+<%= render layout: "ric_admin/layouts/with_right_side" do %>
+	<h3><%= t("headers.admin.restaurants.kitchen") %></h3>
+	<%= rug_show_table_for(@kitchen, { 
+		max_delivery_time: { type: :duration, days: false, seconds: false },
+		force_closed: { type: :state, bool_as_enum: true },
+		#force_closed_note: { type: :text, strip_tags: true },
+		#force_closed_picture: { type: :picture, thumb_style: :thumb },
+	}) %>
+	<h3><%= t("headers.admin.restaurants.index") %></h3>
+	<%= rug_index_table_for(@restaurants, { 
+		name: :string,
+		perex: :string,
+		currently_open: { type: :state, bool_as_enum: true, column_label: false },
+	}, paths: {
+		show: "main_app.admin_restaurant_path", 
+		edit: "main_app.edit_admin_restaurant_path",
+		move: "main_app.move_admin_restaurant_path", 
+		destroy: "main_app.admin_restaurant_path"
+	}, moving: true, summary: true) %>
+<% end %>

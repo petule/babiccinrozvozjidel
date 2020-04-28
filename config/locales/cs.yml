@@ -1,0 +1,489 @@
+cs:
+
+  views:
+    languages:
+      cs: Čeština
+
+  general:
+    bool_yes: Ano
+    bool_no: Ne
+    action:
+      add_to_cart: "Přidat do košíku"
+    attribute:
+      duration:
+        days: "<span class='hide-on-tablet'>dní</span><span class='show-on-tablet hide-on-pc'>d</span>"
+        hours: "<span class='hide-on-tablet'>hod.</span><span class='show-on-tablet hide-on-pc'>h</span>"
+        minutes: "<span class='hide-on-tablet'>min.</span><span class='show-on-tablet hide-on-pc'>m</span>"
+        seconds: "<span class='hide-on-tablet'>sek.</span><span class='show-on-tablet hide-on-pc'>s</span>"
+
+  headers:
+    admin:
+      customers:
+        index: Zákazníci
+        addresses: Adresy
+        orders: Objednávky
+      restaurants:
+        index: Restaurace
+        show: Detail restaurace
+        new: Nová restaurace
+        create: Nová restaurace
+        edit: Upravit restauraci
+        update: Upravit restauraci
+        destroy: Smazat restauraci
+        identification: Základní informace
+        special_actions: Speciální akce
+        pictures: Obrázky
+        technicalities: Technické detaily
+        delivery_maps: Doručovací mapa
+        opening_hours: Otevírací doba
+        kitchen: Nastavení kuchyně
+      kitchens:
+        show: Nastavení kuchyně
+        edit: Upravit nastavení kuchyně
+        update: Upravit nastavení kuchyně
+      delivery_maps:
+        index: Doručovací mapy
+        show: Detail mapy
+        new: Nová mapa
+        create: Nová mapa
+        edit: Upravit mapu
+        update: Upravit mapu
+        destroy: Smazat mapu
+        identification: Základní údaje
+        zones: Zóny
+      delivery_map_zones:
+        show: Detail zóny
+        new: Nová zóna
+        create: Nová zóna
+        edit: Upravit zónu
+        update: Upravit zónu
+        destroy: Smazat zónu
+        identification: Základní údaje
+        parameters: Parametry
+      tags:
+        index: Štítky
+        show: Detail štítku
+        new: Nový štítek
+        create: Nový štítek
+        edit: Upravit štítek
+        update: Upravit štítek
+        destroy: Smazat štítek
+        products: Produkty
+      special_actions:
+        new: Nová akce
+        destroy: Smazat akci
+    ric_assortment:
+      admin_products:
+        tags: Štítky
+        special_actions: Speciální akce
+
+  activerecord:
+    attributes:
+      customer:
+        email: Email
+        name: Jméno
+        name_firstname: Jméno
+        name_lastname: Příjmení
+        phone: Telefon
+        personal_data_agreement: Souhlas se zpracování osobních údajů
+        terms_agreement: Souhlas s obchodními podmínkami
+        password: Heslo
+        password_confirmation: Potvrzení hesla
+        current_password: Současné heslo
+        remember_me: Zapamatovat si mě
+        address: Adresa
+        street: Ulice
+        zip: Psč
+        city: Město
+        note: Poznámka
+        created_at: Profil zaregistrován
+        updated_at: Profil upraven
+      restaurant:
+        name: Jméno
+        name_fancy: Jméno
+        perex: Perex
+        assortment: Sortiment
+        content: Obsah
+        logo: Logo
+        profile_picture: Profilový obrázek
+        profile_picture_crop: Ořez profilového obrázku
+        show_logo_over_profile_picture: Zobrazit logo přes profilový obrázek
+        background_picture: Obrázek na pozadí
+        max_delivery_time: Maximální čas doručení
+        payment_types: Typy platby
+        voucher_types: Typy stravenek
+        product_collection: Navázaná kategorie produktů
+        product_collection_id: Navázaná kategorie produktů
+        delivery_map: Doručovací mapa
+        delivery_map_id: Doručovací mapa
+        opening_hours_monday: Otevírací doba - pondělí
+        opening_hours_tuesday: Otevírací doba - úterý
+        opening_hours_wednesday: Otevírací doba - středa
+        opening_hours_thursday: Otevírací doba - čtvrtek
+        opening_hours_friday: Otevírací doba - pátek
+        opening_hours_saturday: Otevírací doba - sobota
+        opening_hours_sunday: Otevírací doba - neděle
+        force_closed: Zavřeno nehledě na otevírací dobu 
+        force_closed_note: Vysvětlivka zavření
+        currently_open: Momentálně otevřeno
+        hidden: Dočasně schováno
+      standard_restaurant:
+        force_closed_values:
+          bool_yes: Zavřeno
+          bool_no: Otevřeno podle otevírací doby
+        force_closed_colors:
+          bool_yes: red
+          bool_no: green
+        currently_open_values:
+          bool_yes: Otevřeno
+          bool_no: Zavřeno
+        currently_open_colors:
+          bool_yes: green
+          bool_no: red
+        hidden_values:
+          bool_yes: Schováno
+          bool_no: Zobrazeno
+        hidden_colors:
+          bool_yes: red
+          bool_no: green
+      fast_restaurant:
+        force_closed_values:
+          bool_yes: Zavřeno
+          bool_no: Otevřeno podle otevírací doby
+        force_closed_colors:
+          bool_yes: red
+          bool_no: green
+        currently_open_values:
+          bool_yes: Otevřeno
+          bool_no: Zavřeno
+        currently_open_colors:
+          bool_yes: green
+          bool_no: red
+        hidden_values:
+          bool_yes: Schováno
+          bool_no: Zobrazeno
+        hidden_colors:
+          bool_yes: red
+          bool_no: green
+      kitchen:
+        force_closed: Zavřeno nehledě na otevírací dobu
+        force_closed_values:
+          bool_yes: Zavřeno
+          bool_no: Otevřeno podle otevírací doby
+        force_closed_colors:
+          bool_yes: red
+          bool_no: green
+        force_closed_note: Vysvětlivka zavření
+        force_closed_picture: Obrázek k vysvětlivce zavření
+        max_delivery_time: Maximální čas doručení
+      delivery_map:
+        name: Jméno
+        restrict_zone: Blokuje objednávku mimo mapu
+        order_below_min_price: Povolit objednávku pod minimální cenou
+      delivery_map_zone:
+        name: Jméno
+        level: Úroveň
+        delivery_map: Doručovací mapa
+        delivery_map_id: Doručovací mapa
+        polygon: Oblast
+        order_below_min_price: Povolit objednávku pod minimální cenou
+        min_order_price: Minimální cena objednávky
+        delivery_price: Cena dopravy pod minimální cenou objednávky
+        package_price: Cena obalu pod minimální cenou objednávky
+        delivery_time: Čas dopravy (min)
+      tag:
+        name: Jméno
+      special_action:
+        title: Popis
+        color: Barva
+        color_values:
+          red: Červená
+          green: Zelená
+          blue: Modrá
+          yellow: Žlutá
+          orange: Oranžová
+      ric_assortment/product:
+        name_fancy: Jméno
+        amount: Množství
+        default_product_category: Kategorie
+        default_product_category_id: Kategorie
+        tag_list: Štítky
+      ric_assortment/product_ticker:
+        key_values:
+          cart_1: Upoutávka na jídlo v košíku
+          cart_2: Upoutávka na poukaz v košíku
+      ric_eshop/order:
+        kitchen_at: V kuchyni
+        shipping_at: Rozvoz
+        delivered_at: Doručeno
+        closed_at: Uzavřeno
+        canceled_at: Stornovávno
+        created_at: Vytvořeno
+        process_states:
+          process_created: Vytvořena objednávka
+          process_kitchen: Objednávka v kuchyni
+          process_shipping: Objednávka se rozváží
+          process_delivered: Objednávka doručena
+          process_closed: Objednávka uzavřena
+          process_canceled: Objednávka stornována
+        customer_location: Zákazníkova poloha
+        payment_type: Typ platby
+        payment_state: Stav platby
+        payment_type_values:
+          cash: Hotově nebo stravenkami
+          cart: Kartou při doručení
+          online: Online přes platební bránu
+          online_ferbuy: FerBuy - Zaplatím, až se najím
+        delivery_type: Typ dopravy
+        delivery_type_values:
+          in_person: Osobní odběr
+          delivery_service: Rozvoz kurýrem
+        delivery_time: Čas doručení
+        delivery_time_formatted: Čas doručení
+        delivery_time_kind: Čas doručení
+        delivery_time_kind_values:
+          now: Co nejdříve
+          later: Později
+        override_min_price: Doplatit do minimální ceny
+        final_price: Konečná cena
+        used_bonus: Použitý bonus
+        payment_price: Cena k zaplacení
+        supplement_price: Doplatek do minimální ceny
+        forward_state: Produkce
+        forward_state_values:
+          forwarded: Předáno k produkci
+          not_forwarded: Nepředáno
+        forward_state_colors:
+          forwarded: green
+          not_forwarded: red
+        payment_state_values:
+          not_paid: Nezaplaceno
+          in_progress: Platba probíhá
+          paid: Zaplaceno online
+          offline: Zaplaceno při doručení
+        payment_state_colors:
+          not_paid: red
+          in_progress: yellow
+          paid: green
+          offline: green
+        step_values:
+          basic: Vyplňte údaje
+          confirmation: Potvrďte objednávku
+      ric_eshop/cart:
+        virtual_items:
+          delivery: Doprava
+          package: Balení
+      ric_website/settings_collection:
+        category_values:
+          eshop: E-shop
+          contact: Kontakt
+          homepage: Homepage
+        restaurant_email: E-mail pro příjem objednávek
+        restaurant_phone: Telefon pro příjem objednávek
+        restaurant_facebook: URL facebookové stránky
+        restaurant_address: Adresa pro osobní odběr jídla
+        online_payment_limit: Finanční limit na online platby
+        online_payment_restriction: Časové omezení na online platby
+        bonus_percent: Bonus za objednávku v %
+        entrepreneur_name: Jméno provozovatele
+        entrepreneur_email: E-mail provozovatele
+        entrepreneur_phone: Telefon provozovatele
+        entrepreneur_address: Adresa provozovatele
+        entrepreneur_org_num: IČ provozovatele
+        theme: Téma
+        theme_values:
+          default: Výchozí
+          christmas: Vánoční
+        banner_no_address_big: Upozornění - 1. řádka (bez vyplněné adresy)
+        banner_no_address_small: Upozornění - 2. řádka (bez vyplněné adresy)
+        banner_address_big: Upozornění - 1. řádka (vyplněná adresa)
+        banner_address_small: Upozornění - 2. řádka (vyplněná adresa)
+        search_line1: Vyhledávání - 1. řádek
+        search_line2: Vyhledávání - 2. řádek
+        search_line3: Vyhledávání - 3. řádek
+        main_text: Hlavní text
+      ric_user/session:
+        location: "Adresa, na které se nacházíte"
+      ric_user/user:
+        role_values:
+          customer: Zákazník
+          observer: Analytik
+      ric_advert/banner:
+        kind_values:
+          vertical_banner: Vertical banner (150x450)
+    notices:
+      models:
+        restaurant:
+          create: Restaurace byla úspěšně vytvořena.
+          update: Restaurace byla úspěšně upravena.
+          destroy: Restaurace byla úspěšně smazána.
+        kitchen:
+          create: Nastavení kuchyňe bylo úspěšně vytvořeno.
+          update: Nastavení kuchyňe bylo úspěšně upraveno.
+          destroy: Nastavení kuchyňe bylo úspěšně smazáno.
+        delivery_map:
+          create: Doručovací mapa byla úspěšně vytvořena.
+          update: Doručovací mapa byla úspěšně upravena.
+          destroy: Doručovací mapa byla úspěšně smazána.
+        delivery_map_zone:
+          create: Zóna doručovací mapy byla úspěšně vytvořena.
+          update: Zóna doručovací mapy byla úspěšně upravena.
+          destroy: Zóna doručovací mapy byla úspěšně smazána.
+        tag:
+          create: "Štítek byl úspěšně vytvořen."
+          update: "Štítek byl úspěšně upraven."
+          move: "Štítek byl úspěšně přesunut."
+          destroy: "Štítek byl úspěšně smazán."
+        special_action:
+          create: "Akce byla úspěšně vytvořena."
+          update: "Akce byla úspěšně upravena."
+          move: "Akce byla úspěšně přesunuta."
+          destroy: "Akce byla úspěšně smazána."
+        ric_user/session:
+          update: Informace o zákazníkovi byly úspěšně uloženy.
+    errors:
+      models:
+        address:
+          attributes:
+            zip:
+              blank: 'PSČ musí být vyplněno.'
+            city:
+              blank: 'Město musí být vyplněno.'
+            street:
+              blank: 'Ulice musí být vyplěna.'
+        customer:
+          attributes:
+            current_password:
+              blank: musí být vyplněno.
+            personal_data_agreement:
+              blank: '- musíte souhlasit se zpracováním osobních údajů.'
+            terms_agreement:
+              blank: '- musíte souhlasit s obchodními podmínkami.'
+            password:
+              blank: 'musí být zadané.'
+              too_short: 'Heslo je příliš krátké.'
+            password_confirmation:
+              confirmation: 'Hesla se neshodují.'
+            email:
+              taken: 'je již obsazen'
+              blank: 'musí být zadán.'
+              invalid: 'má neplatný formát.'
+            name_firstname:
+              blank: 'musí být zadané.'
+            name_lastname:
+              blank: 'musí být zadané.'
+            phone:
+              blank: 'musí být zadán.'
+              invalid: 'má neplatný formát.'
+        restaurant:
+          not_found: Restaurace nebyla nalezena.
+        kitchen:
+          not_found: Nastavení kuchyňe nebylo nalezeno.
+        delivery_map:
+          not_found: Doručovací mapa nebyla nalezena.
+          attributes:
+            name:
+              blank: Musí být vyplněno jméno.
+        delivery_map_zone:
+          not_found: Zóna doručovací mapy nebyla nalezena.
+          attributes:
+            delivery_map_id:
+              blank: Vyberte doručovací mapu.
+            name:
+              blank: Musí být vyplněno jméno.
+            level:
+              blank: Musí být vyplněna úroveň.
+            min_order_price:
+              blank: Musí být vyplněna minimální cena objednávky.
+            delivery_price:
+              blank: Musí být vyplněna cena dopravy.
+            package_price:
+              blank: Musí být vyplněna cena balení.
+            delivery_time:
+              blank: Musí být vyplněn čas dopravy.
+        tag:
+          not_found: "Štítek nebyl nalezen."
+          attributes:
+            name:
+              blank: "Musí být vyplněno jméno."
+        special_action:
+          not_found: "Akce nebyla nalezena."
+        ric_eshop/cart:
+          attributes:
+            cart_items:
+              empty: Košík je zatím prázdný. Nejprve si vyberte si nějaké jídlo z naší nabídky.
+              delivery_maps_crossed: "Položky z této restaurace nelze kombinovat s položkami, které již máte v košíku, protože pocházejí z restaurace či restaurací s odlišným systémem rozvozu."
+              restaurant_closed: "Z této restaurace nelze momentálně objednávat, protože je zavřena."
+        ric_eshop/order:
+          attributes:
+            customer_name:
+              blank: Musí být vyplněno jméno.
+            customer_email:
+              blank: Musí být vyplněn e-mail.
+            customer_phone:
+              blank: Musí být vyplněn telefon.
+            customer_location:
+              blank: Musí být vyplněna adresa.
+              off_zone: "Vypněná adresa je mimo oblast, kam dokážeme rozvážet objednávky."
+              level_too_vague: "Vyplňte prosím přesnou adresu včetně čísla popisného."
+            payment_method:
+              blank: Musí být zvolena platební metoda.
+            override_min_price:
+              blank: Pro dokončení objednávky musíte souhlasit s doplatkem do minimální ceny.
+            price:
+              min_price_not_met: "Minimimální cena objednávky je %{min_price} Kč. Pokud chcete, můžete doplatit rozdíl. A nebo si raději přiobjednejte další položku z naší nabídky."
+
+  pundit:
+    customer_policy:
+      show?: "K této obrazovce nemáte oprávnění."
+    observer_policy:
+      show?: "K této obrazovce nemáte oprávnění."
+    admin_policy:
+      show?: "K této obrazovce nemáte oprávnění."
+
+  #
+  # Devise
+  #
+  devise:
+    action:
+      sign_in: "Přihlásit se"
+      sign_out: "Odhlásit se"
+      sign_up: "Zaregistrovat se"
+      reset_password: "Obnovit heslo"
+      confirm: "Ověřit účet"
+    failure:
+      already_authenticated: ""
+      user:
+        unauthenticated: ""
+        invalid: "Toto heslo není správně."
+        not_found_in_database: "Tento uživatelský účet v aplikaci neexistuje."
+        inactive: "Tento uživatelský účet je momentálně zablokovaný."
+        unconfirmed: "Tento uživatelský účet zatím není ověřen. Na Vaši e-mailovou adresu byly zaslány instrukce pro ověření vašeho uživatelského účtu."
+    mailer:
+      confirmation_instructions:
+        subject: "Instrukce pro ověření uživatelského účtu"
+      reset_password_instructions:
+        subject: "Instrukce pro obnovu hesla"
+    registrations:
+      user:
+        signed_up: "Vytvoření uživatelského účtu proběhlo v pořádku."
+        signed_up_but_unconfirmed: "Vytvoření uživatelského účtu proběhlo v pořádku, je ale nutné Vaši registraci ověřit. Na Vaši e-mailovou adresu byly zaslány instrukce pro ověření vašeho uživatelského účtu."
+        updated: "Účet byl úspěšně upraven."
+    sessions:
+      user:
+        signed_in: "Přihlášení proběhlo v pořádku."
+        signed_out: "Odhlášení proběhlo v pořádku."
+        already_signed_out: "Odhlášení proběhlo v pořádku."
+    confirmations:
+      user:
+        confirmed: "Uživatelský účet byl úspěšně ověřen."
+        send_instructions: "Instrukce pro ověření uživatelského účtu byly odeslány na zadaný e-mail."
+    passwords:
+      new:
+        send_instructions: "Odeslat instrukce pro obnovu hesla"
+      edit:
+        change_password: "Změnit heslo"
+      user:
+        send_instructions: "Instrukce pro obnovu hesla byly odeslány na zadaný e-mail."
+        updated: "Heslo bylo úspěšně změněno."
+        no_token: "Tento uživatelský účet nemá zažádáno o obnovu hesla."

@@ -1,0 +1,68 @@
+<%= render layout: "ric_admin/layouts/with_right_side" do %>
+	<section class="tabs pill">
+		<ul class="tab-nav">
+			<li class="active"><a href="#"><%= t("headers.ric_eshop.admin_orders.identification") %></a></li>
+			<li><a href="#"><%= t("headers.ric_eshop.admin_orders.customer") %></a></li>
+			<li><a href="#"><%= t("headers.ric_eshop.admin_orders.products") %></a></li>
+		</ul>
+		<div class="tab-content active">
+			<%= rug_show_table_for(@order, {
+				created_at: :datetime,
+        kitchen_at: :datetime,
+        shipping_at: :datetime,
+        delivered_at: :datetime,
+        closed_at: :datetime,
+        canceled_at: :datetime,
+				note: :text,
+				forward_state: :state,
+			}) %>
+			<h3><%= t("headers.ric_eshop.admin_orders.payment") %></h3>
+			<%= rug_show_table_for(@order, {
+				price: :currency,
+				supplement_price: :currency,
+        used_bonus: :currency,
+				payment_price: :currency,
+				payment_type: :enum,
+				payment_state: :state,
+			}) %>
+			<h3><%= t("headers.ric_eshop.admin_orders.delivery") %></h3>
+			<%= rug_show_table_for(@order, {
+				delivery_type: :enum,
+				delivery_time_formatted: :string
+			}) %>
+		</div>
+		<div class="tab-content">
+			<%= rug_show_table_for(@order, {
+				customer_name: :string,
+				customer_email: :string,
+				customer_phone: :string
+			}) %>
+			<% if @order.customer_location %>
+				<%= rug_map :customer_location do |m| %>
+					<%= m.marker("customer_location", @order.customer_location[:latitude], @order.customer_location[:longitude]) %>
+					<%= m.marker_label("customer_location", @order.customer_location[:address]) %>
+				<% end %>
+			<% end %>
+		</div>
+		<div class="tab-content">
+			<% 
+				columns = rug_columns 
+				columns.add_column_by_type(:restaurant, { type: :belongs_to, label: :name })
+				columns.add_column_by_block(:product_name) do |order_item|
+					order_item.product_name + (order_item.sub_product_names ? " + " + order_item.sub_product_names.join(", ") : "")
+				end
+				columns.add_column_by_block(:product_price) do |order_item|
+					number_to_currency(order_item.product_price + (order_item.sub_product_prices ? order_item.sub_product_prices.inject(0, :+) : 0), locale: :cs)
+				end
+				columns.add_column_by_type(:amount, :integer)
+				columns.add_column_by_type(:price, :currency)
+			%>
+			<%= rug_index_table_for(@order.order_items.order(restaurant_id: :asc, created_at: :asc), columns, summary: true ) %>
+		</div>
+	</section>
+	<script>//<![CDATA[
+		$('.tabs').on('gumby.onChange', function(e, index) {
+			rug_map_0124ec56df62d9a9ba58cb41a2eb8d47031a4acd.repair();
+		})
+	//]]></script>
+<% end %>

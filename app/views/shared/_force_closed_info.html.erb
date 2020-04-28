@@ -1,0 +1,10 @@
+<% if Kitchen.instance.force_closed == true %>
+	<div class="valign">
+		<div>
+			<%= image_tag(image_url(Kitchen.instance.force_closed_picture.url(:full))) if Kitchen.instance.force_closed_picture.exists? %>
+		</div>
+		<div>
+			<%= Kitchen.instance.force_closed_note.html_safe %>
+		</div>
+	</div>
+<% end %>

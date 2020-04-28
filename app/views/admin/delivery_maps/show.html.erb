@@ -1,0 +1,28 @@
+<%= render layout: "ric_admin/layouts/with_right_side" do %>
+	<%= rug_show_table_for(@delivery_map, { 
+		name: :string,
+		restrict_zone: :boolean,
+		#order_below_min_price: :boolean,
+	}) %>
+	<%= rug_map :delivery_map_zones do |m| %>
+		<% @delivery_map.delivery_map_zones.order(level: :desc).each do |delivery_map_zone| %>
+			<% if delivery_map_zone.polygon %>
+				<%= m.polygon("delivery_map_zone_" + delivery_map_zone.id.to_s, delivery_map_zone.polygon) %>
+				<%= m.polygon_label("delivery_map_zone_" + delivery_map_zone.id.to_s, delivery_map_zone.name) %>
+			<% end %>
+		<% end %>
+	<% end %>
+	<%= rug_index_table_for(@delivery_map.delivery_map_zones.order(level: :asc), { 
+		name: :string,
+		level: :integer,
+		order_below_min_price: :boolean,
+		min_order_price: :currency,
+		delivery_price: :currency,
+		package_price: :currency,
+		delivery_time: :integer
+	}, paths: {
+		show: "main_app.admin_delivery_map_zone_path", 
+		edit: "main_app.edit_admin_delivery_map_zone_path", 
+		destroy: "main_app.admin_delivery_map_zone_path"
+	}) %>
+<% end %>

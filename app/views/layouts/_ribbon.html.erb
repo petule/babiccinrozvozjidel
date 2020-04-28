@@ -1,0 +1,97 @@
+<div class="ribbon">
+
+  <% if @session && @session.location && !@session.location[:address].empty? %>
+
+      <div class="logo row">
+        <a href="/" class="logo"></a>
+      </div>
+
+      <div class="upper">
+        <div class="row">
+          <div class="left">
+            <%= render partial: "shared/phone" %>
+          </div>
+          <div class="right">
+
+            <!-- Menu -->
+            <a class="ribbon-toggle ribbon-menu-toggle sb-toggle-left"><i class="icon-menu"></i><span>Menu</span></a>
+            <div class="ribbon-menu">
+              <%= render_component @menu %>
+            </div>
+
+            <!-- Registration/Login -->
+            <div class="ribbon-menu user-menu">
+              <%= render partial: 'shared/user_menu' %>
+            </div>
+
+            <!-- Languages -->
+            <%= render_component @languages %>
+
+            <!-- Cart -->
+            <a class="ribbon-toggle cart-toggle sb-toggle-right"><span class="title">Košík</span><%= (@cart.empty? ? "" : "<span class=\"amount badge default\">" + @cart.amount.to_s + "</span>").html_safe %><i class="icon-basket"></i></a>
+
+          </div>
+        </div>
+      </div>
+
+      <div class="middle">
+        <div class="row">
+          <div style="position: absolute; left: 135px;">
+            <%= render partial: "shared/delivery_time" %>
+          </div>
+          <div class="right">
+            <%= render partial: "shared/session_info" %>
+          </div>
+        </div>
+      </div>
+
+      <div class="lower">
+        <div class="row">
+          <%= render partial: "shared/tags" %>
+        </div>
+      </div>
+
+  <% else %>
+      <div class="why">
+          <div class="upper">
+            <div class="row">
+              <div class="left">
+                <%= render partial: "shared/phone" %>
+              </div>
+              <div class="right">
+
+                <!-- Menu -->
+                <a class="ribbon-toggle ribbon-menu-toggle sb-toggle-left"><i class="icon-menu"></i><span>Menu</span></a>
+                <div class="ribbon-menu">
+                  <%= render_component @menu %>
+                </div>
+
+                <!-- Registration/Login -->
+                <div class="ribbon-menu user-menu">
+                  <%= render partial: 'shared/user_menu' %>
+                </div>
+
+                <!-- Languages -->
+                <%= render_component @languages %>
+
+                <!-- Cart -->
+                <a class="ribbon-toggle cart-toggle sb-toggle-right"><span class="title">Košík</span><%= (@cart.empty? ? "" : "<span class=\"amount badge default\">" + @cart.amount.to_s + "</span>").html_safe %><i class="icon-basket"></i></a>
+
+              </div>
+            </div>
+          </div>
+
+          <div class="middle">
+            <div class="row">
+              <div style="position: absolute; left: 135px;">
+                <%= render partial: "shared/delivery_time" %>
+              </div>
+              <div class="right">
+                <%= render partial: "shared/session_info" %>
+              </div>
+            </div>
+          </div>
+      </div>
+  <% end %>
+
+</div>

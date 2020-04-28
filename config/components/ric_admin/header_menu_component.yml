@@ -1,0 +1,102 @@
+items:
+  -
+    label: headers.ric_website.admin_pages.index
+    url: ric_website_admin.pages_path
+    show_if: "policy(:admin).show?"
+    dropdown:
+      - 
+        label: headers.ric_website.admin_pages.index
+        url: ric_website_admin.pages_path
+        icon: flow-tree
+        active_if: "controller_name == 'admin_pages'"
+        show_if: "policy(:admin).show?"
+      -
+        label: headers.ric_website.admin_menus.index
+        url: ric_website_admin.menus_path
+        icon: menu
+        active_if: "controller_name == 'admin_menus'"
+        show_if: "policy(:admin).show?"
+  -
+    label: headers.ric_advert.admin_banners.index
+    url: ric_advert_admin.banners_path
+    icon: layout
+    active_if: "controller_name == 'admin_banners'"
+    show_if: "policy(:admin).show?"
+  -
+    type: delimiter
+    show_if: "policy(:admin).show?"
+  -
+    label: headers.admin.delivery_maps.index
+    url: main_app.admin_delivery_maps_path
+    icon: map
+    active_if: "controller_name.start_with?('delivery_map')"
+    show_if: "policy(:admin).show?"
+  -
+    label: headers.admin.restaurants.index
+    url: main_app.admin_restaurants_path
+    icon: home
+    active_if: "controller_name == 'restaurants' || controller_name == 'kitchens'"
+    show_if: "policy(:admin).show?"
+  -
+    label: headers.ric_assortment.admin_products.index
+    url: ric_assortment_admin.products_path
+    show_if: "policy(:admin).show?"
+    dropdown:
+      - 
+        label: headers.ric_assortment.admin_products.index
+        url: ric_assortment_admin.products_path
+        icon: star
+        active_if: "controller_name.start_with?('admin_product') && controller_name != 'admin_product_categories'"
+        show_if: "policy(:admin).show?"
+      -
+        label: headers.ric_assortment.admin_product_categories.index
+        url: ric_assortment_admin.product_categories_path
+        icon: flow-tree
+        active_if: "controller_name == 'admin_product_categories'"
+        show_if: "policy(:admin).show?"
+      -
+        label: headers.ric_assortment.admin_product_tickers.index
+        url: ric_assortment_admin.product_tickers_path
+        icon: layout
+        active_if: "controller_name == 'admin_product_tickers'"
+        show_if: "policy(:admin).show?"
+  -
+    label: headers.admin.tags.index
+    url: main_app.admin_tags_path
+    icon: tag
+    active_if: "controller_name == 'tags'"
+    show_if: "policy(:admin).show?"
+  -
+    label: headers.ric_eshop.admin_orders.index
+    url: ric_eshop_admin.orders_path
+    icon: flag
+    active_if: "controller_name == 'admin_orders'"
+    show_if: "policy(:admin).show? || policy(:observer).show?"
+  -
+    label: 'Zákazníci'
+    url: main_app.admin_customers_path
+    icon: user
+    active_if: "controller_name == 'admin_customers'"
+    show_if: "policy(:admin).show?"
+  -
+    type: delimiter
+    show_if: "policy(:admin).show? || policy(:observer).show?"
+  -
+    label: headers.ric_user.admin_users.index
+    url: ric_user_admin.users_path
+    icon: user
+    active_if: "controller_name == 'admin_users'"
+    show_if: "policy(:admin).show?"
+  -
+    label: headers.ric_website.admin_settings.show
+    url: ric_website_admin.settings_path
+    icon: cog
+    active_if: "controller_name == 'admin_settings'"
+    show_if: "policy(:admin).show?"
+  -
+    type: delimiter
+    show_if: "policy(:admin).show?"
+  -
+    label: headers.web
+    url: main_app.root_path
+    icon: globe

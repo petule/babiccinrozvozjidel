@@ -1,0 +1,29 @@
+<% url = setting_get("restaurant_facebook") %>
+<div class="facebook left">
+	<div class="row">
+		<div class="three columns picture">
+			<a href="<%= url %>"><%= image_tag(image_url("facebook_logo.png")) %></a>
+		</div>
+		<div class="nine columns">
+			<h4><a href="<%= url %>">Restaurace Řízkárna</a></h4>
+			<div class="fb-like" 
+				data-href="<%= url %>" 
+				data-layout="button" 
+				data-action="like" 
+				data-show-faces="false" 
+				data-share="false"
+			></div>
+		</div>
+	</div>
+	<hr/>
+	<div class="fb-like" 
+		data-href="<%= url %>" 
+		data-layout="standard" 
+		data-action="recommend" 
+		data-show-faces="true" 
+		data-share="false"
+		data-colorscheme="dark"
+		data-width="325"
+	></div>
+	<hr/>
+</div>

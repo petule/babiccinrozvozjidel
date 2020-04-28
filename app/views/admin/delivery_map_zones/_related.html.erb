@@ -1,0 +1,5 @@
+<%= rug_menu_for(@delivery_map_zone, name: "related") do |m| %>
+	<% if @delivery_map_zone %>
+		<%= m.item t("headers.admin.delivery_maps.show"), admin_delivery_map_path(@delivery_map_zone.delivery_map_id), icon: "search" %>
+	<% end %>
+<% end %>

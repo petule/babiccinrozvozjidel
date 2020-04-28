@@ -1,0 +1,80 @@
+<%= render partial: "shared/force_closed_info" %>
+<div class="hide-on-tablet">
+	<%= render partial: "shared/zone_info" %>
+</div>
+
+<% if !customer_signed_in? %>
+  <div class="flash warning alert center">
+      <span class="big">
+        <%= link_to 'ZAREGISTRUJTE SE', new_customer_registration_path %>, PŘIPRAVUJEME PRO VÁS BONUSOVÝ PROGRAM A DALŠÍ VÝHODY
+      </span>
+  </div>
+<% end %>
+
+<% if true #@session && @session.location && !@session.location[:address].empty? %>
+
+  <div class="hide-on-pc show-on-tablet">
+    <%= render partial: "shared/session_info" %>
+  </div>
+  <div class="hide-on-tablet">
+    <%= render partial: "shared/product_ticker_homepage" %>
+  </div>
+
+  <% @open_restaurants.each_slice(3) do |slice| %>
+    <div class="row">
+      <% slice.each do |restaurant| %>
+        <div class="four columns">
+          <%= render partial: "shared/restaurant_ticker", locals: { restaurant: restaurant } %>
+        </div>
+      <% end %>
+    </div>
+  <% end %>
+  <div class="hide-on-tablet">
+    <h2 class="center padded">Zavřené restaurace – momentálně nerozváží</h2>
+    <% @closed_restaurants.each_slice(3) do |slice| %>
+      <div class="row">
+        <% slice.each do |restaurant| %>
+          <div class="four columns">
+            <%= render partial: "shared/restaurant_ticker", locals: { restaurant: restaurant } %>
+          </div>
+        <% end %>
+      </div>
+    <% end %>
+  </div>
+
+<% else %>
+<div class="why">
+    <div class="hide-on-pc show-on-tablet">
+      <%= render partial: "shared/session_info" %>
+    </div>
+
+    <table class="why-list" style="position: relative; width: 115%; left: -7%;">
+      <tr>
+        <td style="width: 33%;">
+          <img src="<%= image_url("auto_babidlo-2017.png") %>" />
+        </td>
+        <td style="width: 33%;">
+          <%== RicWebsite::Helpers::SettingHelper.setting_get("main_text") %>
+        </td>
+        <td style="width: 25%">
+          <img src="<%= image_url("moped_a_ridic.png") %>" />
+        </td>
+      </tr>
+    </table>
+
+    <hr />
+
+    <div class="hide-on-tablet" style="position: relative;">
+      <img src="<%= image_url('salat.png') %>" style="position: absolute; left: -320px; top: -20px; height: 250px; z-index: -10;"/>
+      <%= render partial: "shared/product_ticker_homepage" %>
+      <img src="<%= image_url('hamburger.png') %>" style="position: absolute; right: -350px; top: -20px; height: 250px; z-index: -10;" />
+    </div>
+    <div>
+      <img src="<%= image_url('restaurace.png') %>" style="margin-left: auto; margin-right: auto; width: 100%;" />
+    </div>
+</div>
+
+<% end %>
+
+<%= render partial: "shared/marketing/google_adwords_remarketing" if Rails.env.production? %>
+<%= render partial: "shared/marketing/seznam_retargeting" if Rails.env.production? %>

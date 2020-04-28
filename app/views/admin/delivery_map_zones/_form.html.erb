@@ -1,0 +1,22 @@
+<%= rug_form_for(@delivery_map_zone, create_url: "main_app.admin_delivery_map_zones_path", update_url: "main_app.admin_delivery_map_zone_path") do |f| %>
+	<%= f.hidden_field :delivery_map_id %>
+	<section class="tabs pill">
+		<ul class="tab-nav">
+			<li class="active"><a href="#"><%= t("headers.admin.delivery_map_zones.identification") %></a></li>
+			<li><a href="#"><%= t("headers.admin.delivery_map_zones.parameters") %></a></li>
+		</ul>
+		<div class="tab-content active">
+			<%= f.text_input_row :name %>
+			<%= f.text_input_row :level, :number_field %>
+			<%= f.map_polygon_row :polygon %>
+		</div>
+		<div class="tab-content">
+			<%= f.checkbox_row :order_below_min_price %>
+			<%= f.text_input_row :min_order_price, :number_field %>
+			<%= f.text_input_row :delivery_price, :number_field %>
+			<%= f.text_input_row :package_price, :number_field %>
+			<%= f.text_input_row :delivery_time, :number_field %>
+		</div>
+	</section>
+	<%= f.primary_button_row :submit %>
+<% end %>

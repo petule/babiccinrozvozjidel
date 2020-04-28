@@ -1,0 +1,46 @@
+/*
+ *= require gumby/css/gumby
+ */
+
+/*
+ *= require dropzone/dropzone
+ *= require dropzone/dropzone.gumby
+ */
+
+/*
+ *= require pikaday/pikaday
+ *= require pikaday/pikaday.gumby
+ */
+
+/*
+ *= require jcrop/jcrop
+ */
+
+/*
+ *= require alertify/alertify.core
+ *= require alertify/alertify.gumby
+ */
+
+/*
+ *= require tokeninput/tokeninput
+ *= require tokeninput/tokeninput.facebook
+ *= require tokeninput/tokeninput.gumby
+ */
+
+/*
+ *= require slidebars/slidebars
+ */
+
+/*
+ *= require clockpicker/clockpicker
+ *= require clockpicker/clockpicker.gumby
+ */
+
+/*
+ *= require fancybox/fancybox
+ */
+
+/*
+ *= require_tree ./application
+ *= require_self
+ */

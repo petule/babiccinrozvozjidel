@@ -1,0 +1,29 @@
+<%= render layout: "ric_admin/layouts/with_right_side" do %>
+    <%= rug_show_table_for(@customer, {
+        name: :string,
+        email: :string,
+        phone: :string,
+        bonus: :currency,
+        created_at: :string,
+        updated_at: :string,
+        last_sign_in_at: :string
+    }) %>
+
+    <% if @customer.addresses.count > 0 %>
+        <h3><%= t("headers.admin.customers.addresses") %></h3>
+        <%= rug_index_table_for(@customer.addresses, {
+            address: :string
+        }, paths: {
+        }) %>
+    <% end %>
+
+    <% if @customer.orders.count > 0 %>
+        <h3><%= t("headers.admin.customers.orders") %></h3>
+        <%= rug_index_table_for(@customer.orders, {
+            customer_location_address: :string,
+            payment_price: :currency
+        }, paths: {
+            show: 'ric_eshop_admin.order_path'
+        }) %>
+    <% end %>
+<% end %>

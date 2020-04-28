@@ -1,0 +1,67 @@
+<%= form_tag(ric_eshop_public.cart_add_path) do %>
+	<%= hidden_field_tag :product_id, product.id %>
+	<%= hidden_field_tag :restaurant_id, (!restaurant.nil? ? restaurant.id : nil) %>
+	<div class="row product-show">
+		
+		<% first_product_photo = product.product_photos.first %>
+		<% if first_product_photo && first_product_photo.picture.exists? %>
+			<div class="picture two columns">
+				<%#= image_tag(first_product_photo.picture.url(:full), class: "zoomify") %>
+				<%= link_to first_product_photo.picture.url(:full), class: "fancybox" do %>
+					<%= image_tag(first_product_photo.picture.url(:thumb)) %>
+				<% end %>
+			</div>
+		<% end %>
+
+		<div class="content <%= (first_product_photo && first_product_photo.picture.exists? ? "ten" : "twelve") %> columns">
+			
+			<div class="row">
+				<div class="name six columns">
+					<h3><%= product.name_fancy %></h3>
+					<div class="labels">
+						<% product.special_actions.order(position: :asc).each do |special_action| %>
+							<span class="label default color-<%= special_action.color %>"><%= special_action.title %></span>
+						<% end %>
+					</div>
+				</div>
+				<div class="amount two columns">
+					<p><%= product.amount %></p>
+				</div>
+				<div class="price three columns">
+					<p class="strong"><%= number_to_currency(product.price, locale: :cs) %></p>
+				</div>
+				<div class="order one columns hide-on-tablet">
+					<% if restaurant.nil? || (restaurant.currently_open && (@cart.delivery_map.nil? || @cart.delivery_map.id == restaurant.delivery_map_id)) %>
+						<span class="" data-tooltip="<%= t("general.action.add_to_cart") %>"><%= button_tag "", class: "as-icon icon-basket" %></span>
+					<% end %>
+				</div>
+			</div>
+
+			<div class="row">
+				<div class="description">
+					<%= product.content.html_safe if product.content %>
+				</div>
+				<% product.product_variants.order(position: :asc).each do |product_variant| %>
+					<div class="variant field-no-gumby">
+						<h4><%= product_variant.name %></h4>
+						<% product_variant.sub_products.order(position: :asc).each_with_index do |sub_product, index| %>
+							<% radio_id = "product_variant_#{product_variant.id}_#{sub_product.id}" %>
+							<% radio_name = "product_variant_#{product_variant.id}" %>
+							<label class="<%= (index == 0 ? "checked" : "") %>" for="<%= radio_id %>">
+								<input name="<%= radio_name %>" id="<%= radio_id %>" value="<%= sub_product.id %>" type="radio" <%= (index == 0 ? "checked=\"checked\"".html_safe : "") %>>
+								<span></span> <%= sub_product.name %>
+							</label>
+						<% end %>
+					</div>
+				<% end %>
+			</div>
+			
+			<div class="order hide-on-pc show-on-tablet">
+				<% if restaurant.nil? || (restaurant.currently_open && (@cart.delivery_map.nil? || @cart.delivery_map.id == restaurant.delivery_map_id)) %>
+					<div class="medium primary btn"><%= button_tag t("general.action.add_to_cart") %></div>
+				<% end %>
+			</div>
+		</div>
+	</div>
+<% end %>
+<hr/>

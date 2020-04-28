@@ -1,0 +1,15 @@
+# Available currencies
+currencies:
+  - cs
+
+# Availabele payment types
+payment_types:
+  - cash
+  - cart
+  - online
+  - online_ferbuy
+
+# Availabele delivery types
+delivery_types:
+  - delivery_service
+  - in_person

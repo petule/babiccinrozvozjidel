@@ -1,0 +1,10 @@
+<%= rug_menu_for(@restaurant, name: "actions", path_base: "main_app.admin_restaurant") do |m| %>
+	<%= m.index_item t("headers.admin.restaurants.index") %>
+	<%= m.new_item t("headers.admin.restaurants.new") %>
+	<% if @kitchen %>
+		<%= m.item t("headers.admin.kitchens.edit"), main_app.edit_admin_kitchen_path, icon: "pencil", active: (controller_name == "kitchens" && action_name == "edit") %>
+	<% end %>
+	<%= m.show_item t("headers.admin.restaurants.show") %>
+	<%= m.edit_item t("headers.admin.restaurants.edit") %>
+	<%= m.destroy_item t("headers.admin.restaurants.destroy") %>
+<% end %>

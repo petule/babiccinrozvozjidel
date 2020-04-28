@@ -1,0 +1,113 @@
+<%= render layout: "ric_admin/layouts/with_right_side" do %>
+	<%#= rug_index_table_for(@orders, { 
+		created_at: :datetime,
+		payment_price: :currency,
+		delivery_type: :enum,
+		delivery_time_formatted: :string,
+		payment_type: :enum,
+		payment_state: :state,
+		forward_state: :state,
+	}, paths: {
+		show: :order_path,
+		edit: :edit_order_path,
+		destroy: :order_path
+	}, pagination: true, summary: true ) %>
+    
+    <% @orders.each do |order| %>
+        <div class="order <%= order.process_state %>">
+          <table>
+            <tr>
+              <td data-id="<%= order.id %>" class="column medium default btn icon-left entypo icon-search" style="width: 12rem;">
+                <%= link_to order.created_at.strftime('%e. %-m. %Y %k:%M'), order %>
+              </td>
+              <td style="min-width: 52rem; max-width: 52rem; width: 52rem;">
+                <table style="width: 100%;">
+                  <tr>
+                    <td style="width: 25%;">
+                      <em>Cena k zaplacení: </em><br /><b><%= number_to_currency(order.payment_price) %></b>
+                    </td>
+                    <td style="width: 25%;">
+                      <em>Typ dopravy: </em><br /><b><%= t("activerecord.attributes.ric_eshop/order.delivery_type_values.#{order.delivery_type}") %></b>
+                    </td>
+                    <td style="width: 25%;">
+                      <em>Čas doručení: </em><br /><b><%= order.delivery_time_formatted %></b>
+                    </td>
+                    <td style="width: 25%;">
+                      <em>Typ platby: </em><br /><b><%= t("activerecord.attributes.ric_eshop/order.payment_type_values.#{order.payment_type}") %></b>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <em>Stav platby: </em>
+                      <br />
+                      <div class="default label state-<%= order.payment_state %> <%= order.payment_state == 'not_paid' ? 'color-red' : 'color-green' %>">
+                        <%= t("activerecord.attributes.ric_eshop/order.payment_state_values.#{order.payment_state}") %>
+                      </div>
+                    </td>
+                    <td>
+                      <em>Produkce: </em>
+                      <br />
+                      <div class="default label state-<%= order.forward_state %> <%= order.forward_state == 'not_forwarded' ? 'color-red' : 'color-green' %>">
+                        <%= t("activerecord.attributes.ric_eshop/order.forward_state_values.#{order.forward_state}") %>
+                      </div>
+                    </td>
+                    <td colspan="2">
+                      <em>Stav zpracování: </em>
+                      <br />
+                      <%= select_tag :process_state, options_for_select(RicEshop::Order.process_state_attributes_for_select, order.process_state), { data: { id: order.id } } %>
+                    </td>
+                  </tr>
+                </table>
+              </td>
+              <td style="width: 26rem;">
+                <em>Adresa: </em>
+                <br />
+                <%= order.customer_name %> &lt;<%= order.customer_email %>&gt;
+                <br /><%= order.customer_location_address %>
+                <br /><%= order.customer_phone %>
+              </td>
+              <td>
+                <div class="row">
+                  <div class="column medium danger btn icon-left entypo icon-trash">
+                    <%= link_to '', order, method: :delete, data: { confirm: 'Jste si jisti?' } %>
+                  </div>
+                </div>
+              </td>
+            </tr>
+          </table>
+        </div>
+    <% end %>
+
+    <script type="application/javascript">
+      $('select[name=process_state]').on('change', function() {
+          var id = $(this).data('id');
+          var value = $(this).val();
+          $.ajax({
+              url: '/admin/eshop/orders/'+id,
+              type: 'PUT',
+              data: { 'order[process_state]': value },
+              dataType: 'json'
+          });
+      });
+    </script>
+    
+    <nav class="pagination">
+      <span class="first"><%= link_to 'První', ric_eshop_admin.orders_path %></span>
+      <% 
+        num_all_orders = RicEshop::Order.count
+        num_orders = @orders.count
+        num_pages = (num_all_orders.to_f / num_orders.to_f).ceil
+      %>
+      <% (1..num_pages).each do |n| %>
+          <% if n == params[:page].to_i %>
+              <span class="current"><%= n %></span>
+          <% else %>
+              <span class="">
+                <%= link_to n.to_s, ric_eshop_admin.orders_path(page: n) %>
+              </span>
+          <% end %>
+      <% end %>
+      <span class="last"><%= link_to 'Poslední', ric_eshop_admin.orders_path(page: num_pages) %></span>
+    </nav>
+    <div class="summary">Zobrazeno <%= num_orders %>/<%= num_all_orders %></div>
+<% end %>

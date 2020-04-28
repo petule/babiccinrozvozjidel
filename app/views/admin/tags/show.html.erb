@@ -1,0 +1,20 @@
+<%= render layout: "ric_admin/layouts/with_right_side" do %>
+	<%= rug_show_table_for(@tag, { 
+		name: :string,
+	}) %>
+
+	<% if @products.count > 0 %>
+		<h3><%= t("headers.admin.tags.products") %></h3>
+		<%= rug_index_table_for(@products.order(default_product_category_id: :asc, position: :asc), { 
+			name: :string,
+			default_product_category: { type: :belongs_to, label: :name },
+			content: :text,
+			amount: :string,
+			price: :integer
+		}, paths: {
+			show: "ric_assortment_admin.product_path",
+			edit: "ric_assortment_admin.edit_product_path",
+		}) %>
+	<% end %>
+
+<% end %>

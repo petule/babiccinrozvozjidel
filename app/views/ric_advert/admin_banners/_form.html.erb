@@ -1,0 +1,10 @@
+<%= rug_form_for(@banner, create_url: :banners_path, update_url: :banner_path, html: { :multipart => true }) do |f| %>
+	<%= f.text_input_row :name, :text_field %>
+	<%= f.text_input_row :url, :text_field %>
+	<%= f.picker_row :kind %>
+	<%= f.dropzone_row :file %>
+	<%= f.date_picker_row :valid_from %>
+	<%= f.date_picker_row :valid_to %>
+	<%= f.text_input_row :priority, :number_field %>
+	<%= f.primary_button_row :submit %>
+<% end %>

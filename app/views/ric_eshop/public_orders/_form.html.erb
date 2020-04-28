@@ -1,0 +1,42 @@
+<!-- Navigation tabs -->
+<section class="tabs pill">
+	<ul class="tab-nav">
+		<% @order.steps.each_with_index do |step, index| %>
+			<li class="<%= @order.current_step == step ? "active" : ""%>"><a href="#"><%= index + 1 %>. <%= t("activerecord.attributes.ric_eshop/order.step_values.#{step}") %></a></li>
+		<% end %>
+	</ul>
+</section>
+
+<!-- Content out of form -->
+<%= render partial: "form_#{@order.current_step}_step_out" %>
+
+<%= rug_form_for(@order, create_url: "ric_eshop_public.orders_path") do |f| %>
+
+	<!-- Content in form -->
+	<%= render partial: "form_#{@order.current_step}_step", locals: { f: f } %>
+	
+	<!-- Navigation buttons -->
+	<% if @cart.empty? %>
+		<div class="flash warning alert"><%= t("activerecord.errors.models.ric_eshop/cart.attributes.cart_items.empty") %></div>
+	<% else %>
+		<hr/>
+		<div class="clearfix">
+			<% if !@order.first_step? %>
+				<div class="medium default btn"><%= f.submit "Zpět na změnu údajů", :name => "back_button" %></div>
+			<% end %>
+			<% if !@order.last_step? %>
+				<div class="large primary btn float-right-on-pc"><%= f.submit "Dále na potvrzení objednávky" %></div>
+			<% else %>
+				<% if @order.customer_location && @order.delivery_map && @order.delivery_map.restrict_zone && @order.delivery_map_zone.nil? %>
+					<div class="flash danger alert"><%= t("activerecord.errors.models.ric_eshop/order.attributes.customer_location.off_zone") %></div>
+					<% disable_order = true %>
+				<% end %>
+				<% if disable_order != true %>
+					<div class="large primary btn float-right-on-pc"><%= f.submit "Dokončit objednávku" %></div>
+					<!--<div class="flash warning alert">Omlouváme se za případné nedostatky v procesu objednávek, všechny zakázky budou odsouhlasené ještě telefonicky.</div>-->
+				<% end %>
+			<% end %>
+		</div>
+	<% end %>
+
+<% end %>

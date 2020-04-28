@@ -1,0 +1,29 @@
+<%= render layout: "ric_admin/layouts/with_right_side" do %>
+	<section class="tabs pill">
+		<ul class="tab-nav">
+			<li class="active"><a href="#"><%= t("headers.admin.delivery_map_zones.identification") %></a></li>
+			<li><a href="#"><%= t("headers.admin.delivery_map_zones.parameters") %></a></li>
+		</ul>
+		<div class="tab-content active">
+			<%= rug_show_table_for(@delivery_map_zone, { 
+				name: :string,
+				level: :integer,
+				delivery_map: { type: :belongs_to, label: :name, path: :admin_delivery_map_path }
+			}) %>
+			<%= rug_map :polygon do |m| %>
+				<% if @delivery_map_zone.polygon %>
+					<%= m.polygon(@delivery_map_zone.name, @delivery_map_zone.polygon) %>
+				<% end %>
+			<% end %>
+		</div>
+		<div class="tab-content">
+			<%= rug_show_table_for(@delivery_map_zone, { 
+				order_below_min_price: :boolean,
+				min_order_price: :currency,
+				delivery_price: :currency,
+				package_price: :currency,
+				delivery_time: :integer
+			}) %>
+		</div>
+	</section>
+<% end %>

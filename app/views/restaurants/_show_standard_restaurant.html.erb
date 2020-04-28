@@ -1,0 +1,25 @@
+<%= render partial: "shared/restaurant" %>
+<% if !@restaurant.currently_open %>
+	<div class="flash danger alert">
+		<%= t("activerecord.errors.models.ric_eshop/cart.attributes.cart_items.restaurant_closed") %>
+	</div>
+<% elsif !@cart.delivery_map.nil? && @cart.delivery_map.id != @restaurant.delivery_map_id %>
+	<div class="flash danger alert">
+		<%= t("activerecord.errors.models.ric_eshop/cart.attributes.cart_items.delivery_maps_crossed") %>
+	</div>
+<% end %>
+<% if @restaurant.product_collection %>
+	<div class="box">
+		<% RicAssortment.product_model.from_category(@restaurant.product_collection_id).order(position: :asc).each do |product| %>
+			<%= render partial: "shared/product", locals: { product: product, restaurant: @restaurant } %>
+		<% end %>
+	</div>
+	<% @restaurant.product_collection.children.order(lft: :asc).each do |product_category| %>
+		<div class="box">
+			<h2><%= product_category.name %></h2>
+			<% RicAssortment.product_model.from_category(product_category.id).order(position: :asc).each do |product| %>
+				<%= render partial: "shared/product", locals: { product: product, restaurant: @restaurant } %>
+			<% end %>
+		</div>
+	<% end %>
+<% end %>

@@ -1,0 +1,7 @@
+<%= rug_form_for(@kitchen, url: main_app.admin_kitchen_path) do |f| %>
+	<%= f.duration_row :max_delivery_time, days: false, seconds: false %>
+	<%= f.checkbox_row :force_closed %>
+	<%= f.text_area_row :force_closed_note %>
+	<%= f.dropzone_row :force_closed_picture, update_url: "main_app.admin_kitchen_path" %>
+	<%= f.primary_button_row :submit %>
+<% end %>

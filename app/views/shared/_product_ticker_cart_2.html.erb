@@ -1,0 +1,32 @@
+<div class="row">
+	<div class="nine columns">
+		<h2>Dárkové poukazy</h2>
+		<p>A co ještě potěšit své přátele? Kupte jim náš dárkový poukaz.</p>
+		<div class="row">
+			<% 
+				products_count = products.count
+				column_width = case products_count
+					when 1 then "twelve"
+					when 2 then "six"
+					when 3 then "four"
+					when 4 then "three"
+					when 5 then "two"
+					when 6 then "two"
+					else "one"
+				end
+			%>
+			<% products.order(position: :asc).each do |product| %>
+				<div class="<%= column_width %> columns">
+					<%= form_tag(ric_eshop_public.cart_add_path) do %>
+						<%= hidden_field_tag :product_id, product.id %>
+						<%= hidden_field_tag :restaurant_id, (product.restaurant ? product.restaurant.id : nil) %>
+						<div class="medium default btn"><%= button_tag product.name %></div>
+					<% end %>
+				</div>
+			<% end %>
+		</div>
+	</div>
+	<div class="three columns">
+		<%= image_tag(image_url("vouchers.png")) %>
+	</div>
+</div>

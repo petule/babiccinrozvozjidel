@@ -1,0 +1,24 @@
+<!-- Cart -->
+
+<h2>Přehled objednávky</h2>
+<div class="hide-on-tablet show-on-pc">
+	<%= render partial: "ric_eshop/public_cart/cart_wide" %>
+</div>
+<div class="hide-on-pc show-on-tablet">
+	<%= render partial: "ric_eshop/public_cart/cart_narrow" %>
+</div>
+<hr/>
+
+<!-- Tickers -->
+
+<% product_ticker_1 = RicAssortment.product_ticker_model.find_by_key("cart_1") %>
+<% if product_ticker_1 %>
+	<%= render partial: "shared/product_ticker_cart_1", locals: { products: product_ticker_1.products } %>
+	<hr/>
+<% end %>
+
+<% product_ticker_2 = RicAssortment.product_ticker_model.find_by_key("cart_2") %>
+<% if product_ticker_2 %>
+	<%= render partial: "shared/product_ticker_cart_2", locals: { products: product_ticker_2.products } %>
+	<hr/>
+<% end %>

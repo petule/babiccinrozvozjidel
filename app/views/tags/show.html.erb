@@ -1,0 +1,19 @@
+<h1 class="center-on-tablet"><%= @tag.name.upcase_first %></h1>
+
+<% last_restaurant = nil %>
+<% RicAssortment.product_model.tagged_with(@tag.name).order(default_product_category_id: :asc, position: :asc).each do |product| %>
+	<% if product.restaurant %>
+		<% if last_restaurant.nil? || product.restaurant.id != last_restaurant.id %>
+			<% if !last_restaurant.nil? %>
+				</div>
+			<% end %>
+			<div class="box">
+			<h2><%= product.restaurant.name_fancy %></h2>
+			<% last_restaurant = product.restaurant %>
+		<% end %>
+		<%= render partial: "shared/product", locals: { product: product, restaurant: product.restaurant } %>
+	<% end %>
+<% end %>
+<% if !last_restaurant.nil? %>
+	</div>
+<% end %>

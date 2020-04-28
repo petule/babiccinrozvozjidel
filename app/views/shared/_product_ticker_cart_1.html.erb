@@ -1,0 +1,7 @@
+<h2>Babiččina denní bomba</h2>
+<p>Máte ještě chuť na skvělé jídlo z naší denní nabídky? Stačí si ho přihodit do košíku.</p>
+<% products.order(position: :asc).each do |product| %>
+	<div class="box">
+		<%= render partial: "shared/product", locals: { product: product, restaurant: product.restaurant } %>
+	</div>
+<% end %>

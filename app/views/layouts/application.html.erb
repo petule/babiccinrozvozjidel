@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+	<title><%= render_component @title %></title>
+	<%= stylesheet_link_tag    'application', media: 'all' %>
+	<%= javascript_include_tag 'application', 'gumby-touch' => '/assets/gumby/js/libs' %>
+	<%= csrf_meta_tags %>
+  <%= render partial: 'shared/maps' %>
+	<%= render partial: "shared/marketing/google_analytics" if Rails.env.production? %>
+	<%= render partial: "shared/marketing/monkeytracker" if Rails.env.production? %>
+	<%#= render partial: "shared/marketing/smartsapp" if Rails.env.production? %>
+  <%= render partial: "shared/marketing/tawk_to" if Rails.env.production? %>
+  <%= render partial: "shared/theming/snowfall" if setting_get("theme") == "christmas" %>
+</head>
+<body class="pretty">
+	<%= render partial: "shared/social/facebook_jssdk" %>
+
+  <% if @session && @session.location && !@session.location[:address].empty? %>
+	  <%= render partial: "layouts/ribbon" %>
+
+    <div id="sb-site" class="body-background" style="background-image: url('<%= background_url %>');">
+
+      <div class="page row <%= @is_homepage ? "misty" : "" %>">
+        <%= render partial: "shared/flash" %>
+        <%= yield %>
+        <div class="banner vertical-banner"></div>
+      </div>
+
+      <%= render partial: "layouts/footer" %>
+
+    </div>
+  <% else %>
+    <div class="why">
+      <%= render partial: "layouts/ribbon" %>
+
+      <div id="sb-site">
+
+        <div class="page row">
+          <%= render partial: "shared/flash" %>
+          <%= yield %>
+          <div class="banner vertical-banner"></div>
+        </div>
+
+        <% if !customer_signed_in? %>
+            <div class="registration-form">
+              <h1><%= link_to 'Zaregistrujte se a vyhrajte', new_customer_registration_path %></h1>
+            </div>
+        <% end %>
+
+        <%= render partial: "layouts/footer" %>
+
+      </div>
+    </div>
+  <% end %>
+	
+	<%= render partial: "layouts/side_left" %>
+	<%= render partial: "layouts/side_right" %>
+</body>
+</html>

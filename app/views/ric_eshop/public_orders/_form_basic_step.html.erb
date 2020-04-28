@@ -1,0 +1,139 @@
+<h2><%= t("activerecord.attributes.ric_eshop/order.step_values.basic") %></h2>
+
+<%= f.hidden_field :session_id %>
+<%= f.hidden_field :override_min_price, value: (@order.override_min_price ? "1" : "") %>
+
+<!-- Basic -->
+<div class="row">
+	<div class="six columns">
+		<%= f.text_input_row :customer_name, :text_field, label: "Jméno a příjmení (přezdívka)" %>
+	</div>
+	<div class="six columns">
+		<div class="row">
+			<div class="six columns">
+				<%= f.text_input_row :customer_email, :text_field, label: "Vaše e-mailová adresa" %>
+			</div>
+			<div class="six columns">
+				<%= f.text_input_row :customer_phone, :text_field, label: "Váš telefon" %>
+			</div>
+		</div>
+	</div>
+</div>
+
+<!-- Address and maybe note -->
+<%# if defined?(compact_note) && compact_note == true %>
+	<div class="row">
+		<div class="six columns">
+      <% if customer_signed_in? %>
+          <label>Vyberte adresu</label>
+          <% current_customer.addresses.each_with_index do |address, i| %>
+              <label onclick="setOrderAddress('order_customer_location_address', '<%= address.address %>', '<%= address.level %>', '<%= address.latitude %>', '<%= address.longitude %>', '<%= address.note %>')">
+                <%= radio_button_tag :address_id, address.id %>
+                <%= address.address %>
+              </label>
+          <% end %>
+      <% end %>
+			<%= f.address_location_row :customer_location, label: 'Adresa doručení' %>
+		</div>
+		<div class="six columns">
+			<%= f.text_area_row :note, tinymce: false %>
+		</div>
+	</div>
+<%# else %>
+	<%#= f.address_location_row :customer_location, label: "Adresa doručení" %>
+<%# end %>
+
+<!-- Delivery and payment -->
+<div class="row">
+	<% columns_size = @force_online_payment ? "six" : "four" %>
+	<div class="<%= columns_size %> columns">
+		<%= f.radios_row :delivery_time_kind %>
+		<%= f.conditional_section :ilater_delivery_time_kind, :delivery_time_kind, "value == 'later'" do %>
+			<%= f.datetime_picker_row :delivery_time, label: false, join: false, placeholder: true %>
+		<% end %>
+	</div>
+	<div class="<%= columns_size %> columns">
+		<%= f.radios_row :delivery_type %>
+		<%= f.conditional_section :in_person_delivery_type, :delivery_type, "value == 'in_person'" do %>
+			<p>Osobní odběr na adrese: <strong><%= setting_get("restaurant_address") %></strong></p>
+		<% end %>
+	</div>
+	<% if !@force_online_payment %>
+		<div class="four columns">
+			<%#= f.radios_row :payment_type %>
+
+			<div class="element">
+				<label for="order_payment_type">Typ platby</label>
+				<div class="field-no-gumby ">
+					<label class="radio-no-gumby" for="order_payment_type_cash">
+						<input type="radio" value="cash" name="order[payment_type]" id="order_payment_type_cash" />
+						<span></span>&nbsp;&nbsp;Hotově nebo stravenkami
+					</label>
+
+					<label class="radio-no-gumby" for="order_payment_type_cart">
+						<input type="radio" value="cart" name="order[payment_type]" id="order_payment_type_cart" />
+						<span></span>&nbsp;&nbsp;Kartou při doručení
+					</label>
+
+					<label class="radio-no-gumby" for="order_payment_type_online">
+						<input type="radio" value="online" name="order[payment_type]" id="order_payment_type_online" />
+						<span></span>&nbsp;&nbsp;Online přes platební bránu
+					</label>
+				</div>
+			</div>
+
+		</div>
+	<% else %>
+		<%= f.hidden_field :payment_type %>
+	<% end %>
+</div>
+<div class="row">
+	<% if !@force_online_payment %>
+		<%= f.conditional_section :online_payment_type, :payment_type, "value == 'online'" do %>
+			<label>Platební metoda</label>
+			<%= thepay_radio_merchant(params) %>
+			<% if @order.errors[:payment_method].size > 0 %>
+				<span class="danger label"><%= @order.errors[:payment_method][0] %></span>
+			<% end %>
+		<% end %>
+	<% else %>
+		<div class="flash warning alert">Prosíme o provedení on-line platby, abychom mohli zpracovat Vaši objednávku.</div>
+		<label>Platební metoda</label>
+		<%= thepay_radio_merchant(params) %>
+		<% if @order.errors[:payment_method].size > 0 %>
+			<span class="danger label"><%= @order.errors[:payment_method][0] %></span>
+		<% end %>
+	<% end %>
+</div>
+
+<!-- Maybe note -->
+<%# if !defined?(compact_note) || compact_note != true %>
+	<%#= f.text_area_row :note, tinymce: false %>
+<%# end %>
+
+<!-- Accept terms -->
+<%= f.checkbox_row :accept_terms %>
+
+<% if customer_signed_in? && current_customer.bonus > 0 %>
+      
+  <hr/>
+  <%= f.hidden_field :use_bonus, value: 1 %>
+  <%= f.text_input_row :used_bonus, :number_field, label: "Využít bonus (až #{current_customer.bonus},- Kč) k placení objednávky." %>
+      
+<% end %>
+
+<script>//<![CDATA[
+	$(document).ready(function() {
+		$('#order_delivery_time_kind_now').change(function() {
+			if ($(this).is(':checked')) {
+				$('#datetime_picker_ebbfd9dadbfd76857722ccc0cfedcde56261bfaa .date').val("");
+				$('#datetime_picker_ebbfd9dadbfd76857722ccc0cfedcde56261bfaa .time').val("");
+				$('#datetime_picker_ebbfd9dadbfd76857722ccc0cfedcde56261bfaa .datetime').val("");
+			}
+		});
+		$('#datetime_picker_ebbfd9dadbfd76857722ccc0cfedcde56261bfaa .date, #datetime_picker_ebbfd9dadbfd76857722ccc0cfedcde56261bfaa .time').change(function() {
+			$('#order_delivery_time_kind_now').prop('checked', false);
+			$('#order_delivery_time_kind_later').prop('checked', true);
+		});
+	});
+//]]></script>

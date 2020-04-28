@@ -1,0 +1,58 @@
+<div class="session-info">
+	<% if @session && @session.location && !@session.location[:address].empty? %>
+		<%= rug_form_for(@session, url: ric_user_public.session_path) do |f| %>
+			<% 
+				hash = Digest::SHA1.hexdigest("location")
+				value = @session.location
+				value_latitude = value && value[:latitude] ? value[:latitude] : nil
+				value_longitude = value && value[:longitude] ? value[:longitude] : nil
+				value_level = value && value[:level] ? value[:level] : nil
+				value_address = value && value[:address] ? value[:address] : nil
+			%>
+			<div class="title">
+				Filtruji restaurace pro:
+			</div>
+			<div id="address_location_<%= hash %>" class="field element">
+				<%= hidden_field_tag("session[location][level]", value_level, class: "level") %>
+				<%= hidden_field_tag("session[location][latitude]", value_latitude, class: "latitude") %>
+				<%= hidden_field_tag("session[location][longitude]", value_longitude, class: "longitude") %>
+				<%= text_field_tag("session[location][address]", value_address, class: "text input address", placeholder: "Zadejte Vaši adresu") %>
+			</div>
+			<div class="medium primary btn"><%= f.submit(@session.location ? "Změnit" : "Zadat adresu") %></div>
+		<% end %>
+  <% else %>
+      <div class="session-background" style="background-image: url('<%= image_url('bg_default.jpg') %>');">
+        <div class="logo row">
+          <a href="/" class="logo"></a>
+        </div>
+
+        <center>
+          <h1><%= RicWebsite::Helpers::SettingHelper.setting_get("search_line1") %></h1>
+          <h1><%= RicWebsite::Helpers::SettingHelper.setting_get("search_line2") %></h1>
+          <%= rug_form_for(@session, url: ric_user_public.session_path) do |f| %>
+              <%
+                hash = Digest::SHA1.hexdigest("location")
+                value = @session.location
+                value_latitude = value && value[:latitude] ? value[:latitude] : nil
+                value_longitude = value && value[:longitude] ? value[:longitude] : nil
+                value_level = value && value[:level] ? value[:level] : nil
+                value_address = value && value[:address] ? value[:address] : nil
+              %>
+              <h2>
+                <%= RicWebsite::Helpers::SettingHelper.setting_get("search_line3") %>
+              </h2>
+              <div class="search-bar" style="padding: 15px; background-color: rgba(255,255,255,0.7); border-radius: 8px; width: 70%;">
+                <div id="address_location_<%= hash %>" class="field element" style="width: 70%;">
+                  <%= hidden_field_tag("session[location][level]", value_level, class: "level") %>
+                  <%= hidden_field_tag("session[location][latitude]", value_latitude, class: "latitude") %>
+                  <%= hidden_field_tag("session[location][longitude]", value_longitude, class: "longitude") %>
+                  <%= text_field_tag("session[location][address]", value_address, class: "text input address", placeholder: "Zadejte Vaši adresu") %>
+                </div>
+                <!-- <div class="medium primary btn"><%= f.submit(@session.location ? "Změnit" : "Zadat adresu") %></div> -->
+                <div class="medium primary btn"><%= f.submit("Zobrazit restaurace") %></div>
+              </div>
+          <% end %>
+        </center>
+      </div>
+	<% end %>
+</div>

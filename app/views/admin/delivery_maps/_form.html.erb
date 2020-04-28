@@ -1,0 +1,6 @@
+<%= rug_form_for(@delivery_map, create_url: "main_app.admin_delivery_maps_path", update_url: "main_app.admin_delivery_map_path") do |f| %>
+	<%= f.text_input_row :name %>
+	<%= f.checkbox_row :restrict_zone %>
+	<%#= f.checkbox_row :order_below_min_price %>
+	<%= f.primary_button_row :submit %>
+<% end %>

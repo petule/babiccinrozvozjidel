@@ -1,0 +1,8 @@
+<% if ["online", "online_ferbuy"].include?(@order.payment_type) && @order.payment_state == "not_paid" %>
+	<h1>Nepodařilo se uskutečnit platbu</h1>
+<% else %>
+	<h1>Děkujeme Vám za objednávku</h1>
+<% end %>
+<div class="medium primary btn"><%= link_to "Zpět na hlavní stranu", main_app.root_path %></div>
+<%= render partial: "shared/marketing/google_adwords" if Rails.env.production? %>
+<%= render partial: "shared/marketing/sklik" if Rails.env.production? %>

@@ -1,0 +1,64 @@
+<%= rug_form_for(@restaurant, create_url: "main_app.admin_restaurants_path", update_url: "main_app.admin_restaurant_path") do |f| %>
+	<section class="tabs pill">
+		<ul class="tab-nav">
+			<li class="active"><a href="#"><%= t("headers.admin.restaurants.identification") %></a></li>
+			<li><a href="#"><%= t("headers.admin.restaurants.special_actions") %></a></li>
+			<li><a href="#"><%= t("headers.admin.restaurants.pictures") %></a></li>
+			<li><a href="#"><%= t("headers.admin.restaurants.opening_hours") %></a></li>
+			<li><a href="#"><%= t("headers.admin.restaurants.technicalities") %></a></li>
+			<li><a href="#"><%= t("headers.admin.restaurants.delivery_maps") %></a></li>
+		</ul>
+		<div class="tab-content active">
+			<%= f.text_area_row :name_fancy, tinymce: "tinymce-string" %>
+			<%= f.picker_row :product_collection_id, RicAssortment.product_category_model.all.order(lft: :asc), :id, :name_with_depth %>
+			<%= f.text_area_row :perex, tinymce: "tinymce-string" %>
+			<%= f.text_area_row :assortment, tinymce: "tinymce-string" %>
+			<%= f.text_area_row :content %>
+			<%= f.checkbox_row :hidden %>
+		</div>
+		<div class="tab-content">
+			<%= f.nested_fields_for :special_actions do |builder| %>
+				<%= render partial: "form_special_action", locals: { f: builder } %>
+			<% end %>
+			<div class="element">
+				<div class="field right">
+					<div class="medium default btn icon-left icon-plus"><%= f.add_nested_fields_link :special_actions, t("headers.admin.special_actions.new") %></div>
+				</div>
+			</div>
+		</div>
+		<div class="tab-content">
+			<%= f.dropzone_row :logo %>
+			<%= f.checkbox_row :show_logo_over_profile_picture %>
+			<%= f.dropzone_row :profile_picture, crop: true %>
+			<%= f.crop_row :profile_picture %>
+			<%= f.dropzone_row :background_picture %>
+		</div>
+		<div class="tab-content">
+			<%= f.range_row :opening_hours_monday, :text_field %>
+			<%= f.range_row :opening_hours_tuesday, :text_field %>
+			<%= f.range_row :opening_hours_wednesday, :text_field %>
+			<%= f.range_row :opening_hours_thursday, :text_field %>
+			<%= f.range_row :opening_hours_friday, :text_field %>
+			<%= f.range_row :opening_hours_saturday, :text_field %>
+			<%= f.range_row :opening_hours_sunday, :text_field %>
+			<%= f.checkbox_row :force_closed %>
+			<%#= f.text_input_row :force_closed_note %>
+		</div>
+		<div class="tab-content">
+			<%= f.text_input_row :max_delivery_time %>
+			<%= f.text_input_row :payment_types %>
+			<%= f.text_input_row :voucher_types %>
+		</div>
+		<div class="tab-content">
+			<%= f.picker_row :delivery_map_id, DeliveryMap.all.order(name: :asc), :id, :name %>
+		</div>
+	</section>
+	<%= f.primary_button_row :submit %>
+<% end %>
+<% if !@restaurant.new_record? %>
+	<script>//<![CDATA[
+		$('.tabs').on('gumby.onChange', function(e, index) {
+			crop_024d7b4dd54a2af99b19aa30d8cd90e8a91f2081_reload(<%= @restaurant.id %>);
+		})
+	//]]></script>
+<% end %>

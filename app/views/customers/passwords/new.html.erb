@@ -1,0 +1,25 @@
+<h2>Zapoměli jste heslo?</h2>
+
+<%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f| %>
+  <%= devise_error_messages! %>
+
+  <div class="element">
+    <%= f.label :email %>
+    <div class="field">
+      <%= f.email_field :email, autofocus: true, class: 'text input' %>
+    </div>
+  </div>
+
+  <div class="actions">
+    <div class="medium primary btn pull_left">
+      <%= f.submit 'Zaslat email pro obnovu hesla' %>
+    </div>
+    <div class="medium secondary btn pull_right">
+      <%= link_to 'Zpět', :back %>
+    </div>
+  </div>
+<% end %>
+
+<br style="float: none; clear: both;" />
+
+<%= render "customers/shared/links" %>

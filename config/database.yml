@@ -1,0 +1,18 @@
+default: &default
+  adapter: postgresql
+  encoding: unicode
+  pool: 5
+  timeout: 5000
+
+development:
+  <<: *default
+  database: babidlo_development
+  username: postgres
+  password:
+
+production:
+  <<: *default
+  database: babidlo_production
+  username: postgres
+  password:
+

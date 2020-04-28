@@ -1,0 +1,13 @@
+# Settings for client copyright
+client:
+  name: Restaurace Řízkárna
+  year: 2015
+  url: http://www.restaurace-rizkarna.cz
+  image: admin_footer_logo.png
+
+# Settings for developer copyright
+developer:
+  name: Clockstar s.r.o.
+  year: 2012
+  url: http://www.clockstar.cz
+  image: admin_footer_logo_clockstar.png

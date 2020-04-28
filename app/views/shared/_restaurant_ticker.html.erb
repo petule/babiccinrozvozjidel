@@ -1,0 +1,25 @@
+<div class="box restaurant-ticker <%= restaurant.currently_open ? "state-online" : "state-offline" %>">
+	<%= link_to main_app.restaurant_path(id: restaurant) do %>
+		<% if restaurant.profile_picture.exists? %>
+			<div class="picture-background" style="background-image: url('<%= restaurant.profile_picture.url(:full) %>');">
+				<% if restaurant.show_logo_over_profile_picture == true && restaurant.logo.exists? %>
+					<div class="logo">
+						<%= image_tag(restaurant.logo.url(:small)) %>
+					</div>
+				<% end %>
+			</div>
+		<% end %>
+		<div class="description">
+			<h2 class="<%= restaurant.currently_open ? "state-online" : "state-offline" %>"><%= restaurant.name_fancy %></h2>
+			<div class="perex"><%= restaurant.assortment.html_safe if restaurant.assortment %></div>
+			<div class="labels">
+				<% restaurant.special_actions.order(position: :asc).each do |special_action| %>
+					<div><span class="label default color-<%= special_action.color %>"><%= special_action.title %></span></div>
+				<% end %>
+			</div>
+		</div>
+		<div class="medium <%= restaurant.currently_open ? "primary" : "info" %> btn <%= restaurant.open? ? "leading-arrow" : "" %>">
+			<span>Zobrazit nabídku jídel</span>
+		</div>
+	<% end %>
+</div>

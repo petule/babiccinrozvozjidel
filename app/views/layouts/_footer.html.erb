@@ -1,0 +1,60 @@
+<div class="footer">
+	<div class="upper">
+		<div class="row">
+			<div class="three columns center">
+				<div class="process-info order">
+					1.&nbsp;Objednáte&nbsp;si
+				</div>
+			</div>
+			<div class="three columns center">
+				<div class="process-info cook">
+					2.&nbsp;Kvalitně&nbsp;uvaříme
+				</div>
+			</div>
+			<div class="three columns center">
+				<div class="process-info deliver">
+					3.&nbsp;Rychle&nbsp;přivezeme
+				</div>
+			</div>
+			<div class="three columns center">
+				<div class="process-info bonus">
+					4.&nbsp;Rozdáme&nbsp;odměny
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="lower">
+		<div class="row">
+			<div class="four columns">
+				<h3>Výběr restaurací</h3>
+				<div class="footer-menu">
+					<ul>
+						<% limit = 9 %>
+						<% Restaurant.not_hidden.order(position: :asc).each do |restaurant| %>							
+							<% if restaurant.currently_open && limit > 0 %>
+								<li><%= link_to restaurant.name, main_app.restaurant_path(id: restaurant) %></li>
+								<% limit -= 1 %>
+							<% end %>
+						<% end %>
+					</ul>
+				</div>
+			</div>
+			<div class="three columns">
+				<h3>O nás</h3>
+				<div class="footer-menu">
+					<%= render_component @footer_menu %>
+				</div>
+			</div>
+			<div class="five columns right-on-pc">
+				<%= render partial: "shared/phone" %>
+				<%= render partial: "shared/social/facebook_like" %>
+			</div>
+		</div>
+		<div class="copy row">
+			<p>&copy; 2013 Babiččin rozvoz jídel, Tel.: <%= setting_get("entrepreneur_phone") %>, <a href="mailto:<%= setting_get("entrepreneur_email") %>"><%= setting_get("entrepreneur_email") %></a>, IČ: <%= setting_get("entrepreneur_org_num") %><br/>
+			Provozovatel: <%= setting_get("entrepreneur_name") %>, <%= setting_get("entrepreneur_address") %></p>
+		</div>
+	</div>
+
+</div>

@@ -1,0 +1,7 @@
+<%= render layout: "ric_admin/layouts/with_right_side" do %>
+	<% if @restaurant.is_a?(FastRestaurant) %>
+		<%= render partial: "show_fast_restaurant" %>
+	<% else %>
+		<%= render partial: "show_standard_restaurant" %>
+	<% end %>
+<% end %>

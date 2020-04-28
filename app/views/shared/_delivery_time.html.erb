@@ -1,0 +1,10 @@
+<% if Kitchen.instance.max_delivery_time %>
+	<div class="delivery-time">
+		<span class="title hide-on-tablet">Teď rozvážíme do:</span>
+		<% if Kitchen.instance.force_closed != true %>
+			<span><strong><%= (Kitchen.instance.max_delivery_time_hours < 3 ? "#{Kitchen.instance.max_delivery_time.minutes_since_midnight} #{t("general.attribute.duration.minutes").downcase}" : Kitchen.instance.max_delivery_time_formatted).html_safe %></strong></span>
+		<% else %>
+			<span><strong>Zavřeno</strong></span>
+		<% end %>
+	</div>
+<% end %>
