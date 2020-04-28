@@ -5,7 +5,7 @@ lock '3.6.1'
 set :application, 'babidlo_www'
 
 # Repository configuration
-set :repo_url, 'git@bitbucket.org:babidlo/babidlo.git'
+set :repo_url, 'git@github.com:petule/babiccinrozvozjidel.git'#'git@bitbucket.org:babidlo/babidlo.git'
 
 # Dirs which should not be updated from repository
 set :linked_dirs, fetch(:linked_dirs, []).push('log', 'tmp/pids', 'tmp/cache', 'tmp/sockets', 'vendor/bundle', 'public/system', 'public/fonts')
