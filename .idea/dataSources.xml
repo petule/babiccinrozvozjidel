@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="DataSourceManagerImpl" format="xml" multifile-model="true">
+    <data-source source="LOCAL" name="babidlo_development" uuid="e9bcf68b-6046-47b9-9635-e6acc4dd4b9d">
+      <driver-ref>postgresql</driver-ref>
+      <synchronize>true</synchronize>
+      <jdbc-driver>org.postgresql.Driver</jdbc-driver>
+      <jdbc-url>jdbc:postgresql://localhost:5432/babidlo_development</jdbc-url>
+    </data-source>
+    <data-source source="LOCAL" name="babidlo_production@localhost" uuid="a90c77b5-8664-4795-94f4-47ebfb66043f">
+      <driver-ref>postgresql</driver-ref>
+      <synchronize>true</synchronize>
+      <jdbc-driver>org.postgresql.Driver</jdbc-driver>
+      <jdbc-url>jdbc:postgresql://localhost:5432/babiccinrozvozjidel_production</jdbc-url>
+    </data-source>
+  </component>
+</project>
